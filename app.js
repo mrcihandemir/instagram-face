@@ -5,7 +5,7 @@ const server = http.createServer((req, res) => {
   res.statusCode = 200;
   res.setHeader('Content-Type', 'text/html');
   res.end('<h1>profile name: <input type="text" name="ip" id="ip"><br>
-          <button onclick="Getir(document.getElementById('ip').value)">Getir</button>
+          <button onclick="Getir(document.getElementById("ip").value)">Getir</button>
           </h1>');
 });
   
