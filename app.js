@@ -8,7 +8,7 @@ const server = http.createServer((req, res) => {
   sayfa = sayfa + "<script>function Getir(ip) { alert(ip);}</script>";
   sayfa = sayfa + '</head>';
   sayfa = sayfa + '<body>';
-  sayfa = sayfa + '<h1>profile name: <input type="text" name="ip" id="ip"><br><button onclick="Getir(document.getElementById(''' + 'ip' + ''').value)">Getir</button></h1>';
+  sayfa = sayfa + '<h1>profile name: <input type="text" name="ip" id="ip"><br><button onclick="Getir(document.getElementById(\"ip\").value)">Getir</button></h1>';
   sayfa = sayfa + '</body></html>';
   res.end(sayfa);
 });
