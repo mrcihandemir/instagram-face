@@ -1,0 +1,15 @@
+{
+  "name": "instagram-face",
+  "version": "1.0.0",
+  "description": "instagram-face",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "instagram-face",
+    "heroku"
+  ],
+  "author": "mrcihandemir",
+  "license": "X"
+}
