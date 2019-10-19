@@ -1,1 +1,1 @@
-var x = "hede";
+var x = 'hede'
