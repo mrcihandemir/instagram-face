@@ -5,7 +5,8 @@ app.use(express.static('public'));
 
 app.get('/', function (req, res) {
   // res.send('Hello World');
-  res.sendfile('index.html');
+  //res.sendfile('index.html');
+  res.send('hellö');
 });
 
 app.listen(3000, function(){
