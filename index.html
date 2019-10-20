@@ -11,13 +11,7 @@
     url: "https://jsonp.afeld.me/?url=http%3A%2F%2Fmotyar.info%2Fwebscrapemaster%2Fapi%2F%3Furl%3Dhttps%3A%2F%2Fwww.instagram.com%2F"+x+"%26xpath%3D%2F%2Fhtml%2Fmeta%5B%40property%3Dog%3Aimage%5D",
     dataType: "json",
     success: function( response ) {
-        console.log(response[0].content);
-        var hede = eval(response);
-        console.log(JSON.stringify(hede));
-        console.log(hede);
-        var obj = JSON.parse(hede);
-        console.log( obj[0].content ); 
-        document.getElementById("inst").innerHTML = '<img src="' + obj[0].content + '"';
+        document.getElementById("inst").innerHTML = '<img src="' + response[0].content + '">';
     }
 });
   }
