@@ -15,8 +15,8 @@
         var hede = eval(response);
         console.log(hede);
         var obj = JSON.parse(hede);
-        console.log( obj.content ); 
-        document.getElementById("inst").innerHTML = '<img src="' + obj.content + '"';
+        console.log( obj[0].content ); 
+        document.getElementById("inst").innerHTML = '<img src="' + obj[0].content + '"';
     }
 });
   }
