@@ -13,6 +13,7 @@
     success: function( response ) {
         console.log(response);
         var hede = eval(response);
+        console.log(JSON.stringify(hede));
         console.log(hede);
         var obj = JSON.parse(hede);
         console.log( obj[0].content ); 
