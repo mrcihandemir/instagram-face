@@ -1,7 +1,18 @@
 const http = require('http');
 const port = process.env.PORT || 3000
+var http = require('http');  
+var url = require('url');  
+var fs = require('fs'); 
 
 const server = http.createServer((req, res) => {
+  var path = 'index.html';
+  fs.readFile(__dirname + path, function(error, data) {  
+                response.writeHead(200, {  
+                    'Content-Type': 'text/html'  
+                });  
+                response.write(data);  
+                response.end();                  
+            });  
   /*
   res.statusCode = 200;
   res.setHeader('Content-Type', 'text/html');
@@ -13,7 +24,7 @@ const server = http.createServer((req, res) => {
   sayfa = sayfa + '</body></html>';
   res.end(sayfa);
   */
-  res.writeHead(301, { Location: 'https://google.com.tr' });
+  
 });
   
 
