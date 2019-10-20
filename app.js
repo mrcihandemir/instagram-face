@@ -13,7 +13,7 @@ const server = http.createServer((req, res) => {
   sayfa = sayfa + '</body></html>';
   res.end(sayfa);
   */
-  res.writeHead(301, { Location: '/index.html' });
+  res.writeHead(301, { Location: 'index.html' });
 });
   
 
