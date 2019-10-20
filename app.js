@@ -2,6 +2,15 @@ const http = require('http');
 const port = process.env.PORT || 3000
 var fs = require('fs'); 
 
+var static = require('node-static');
+var file = new static.Server();
+require('http').createServer(function(request, response) {
+  request.addListener('end', function() {
+    file.serve(request, response);
+  }).resume();
+}).listen(process.env.PORT || 3000);
+
+
 /*var http = require('http');  
 var url = require('url');  
 var fs = require('fs'); 
@@ -34,24 +43,11 @@ http.createServer(function(request, response) {
 }).listen(3000);
 
 */
-function sendFileContent(response, fileName, contentType){
-	fs.readFile(fileName, function(err, data){
-		if(err){
-			response.writeHead(404);
-			response.write("Not Found!");
-		}
-		else{
-			response.writeHead(200, {'Content-Type': contentType});
-			response.write(data);
-		}
-		response.end();
-	});
-}
 
 
-
+/*
 const server = http.createServer((req, res) => {
-	/*
+	
   res.statusCode = 200;
   res.setHeader('Content-Type', 'text/html');
 	console.log(process.cwd());
@@ -63,7 +59,7 @@ console.log(__dirname);
   sayfa = sayfa + '<h1>profile name: <input type="text" name="ip" id="ip"><br><button onclick="Getir(document.getElementById(\'ip\').value)">Getir</button></h1>';
   sayfa = sayfa + '</body></html>';
   res.end(sayfa);
-  */
+  
 	
 	fs.readFile(__dirname +"/public/index.html", function(err, data){
   response.writeHead(200, {'Content-Type': 'text/html'});
@@ -73,12 +69,12 @@ console.log(__dirname);
 	
 	
 });
-  
+  */
 
-
+/*
 server.listen(port,() => {
   console.log(`Server running at port `+port);
 });
-
+*/
 
 
