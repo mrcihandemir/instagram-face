@@ -20,11 +20,23 @@ http.createServer(function(request, response) {
 	}
 	*/
 	
+	/*
 	fs.readFile("index.html", function(err, data){
   response.writeHead(200, {'Content-Type': 'text/html'});
   response.write(data);
   response.end();
 });
+*/
+	
+	res.statusCode = 200;
+  res.setHeader('Content-Type', 'text/html');
+  var sayfa = '<html><head><title>instagram face</title>';
+  sayfa = sayfa + "<script>function Getir(ip) { alert(ip);}</script>";
+  sayfa = sayfa + '</head>';
+  sayfa = sayfa + '<body>';
+  sayfa = sayfa + '<h1>profile name: <input type="text" name="ip" id="ip"><br><button onclick="Getir(document.getElementById(\'ip\').value)">Getir</button></h1>';
+  sayfa = sayfa + '</body></html>';
+  res.end(sayfa);
 	
 }).listen(3000);
 
