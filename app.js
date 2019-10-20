@@ -65,7 +65,7 @@ console.log(__dirname);
   res.end(sayfa);
   */
 	
-	fs.readFile("/public/index.html", function(err, data){
+	fs.readFile(__dirname +"/public/index.html", function(err, data){
   response.writeHead(200, {'Content-Type': 'text/html'});
   response.write(data);
   response.end();
