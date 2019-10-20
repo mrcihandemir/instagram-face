@@ -14,7 +14,7 @@
         console.log(response);
         var hede = eval(response);
         console.log(hede);
-        var obj = JSON.parse(response);
+        var obj = JSON.parse(hede);
         console.log( obj.content ); 
         document.getElementById("inst").innerHTML = '<img src="' + obj.content + '"';
     }
