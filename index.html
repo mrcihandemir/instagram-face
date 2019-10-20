@@ -7,7 +7,7 @@
   function Getir(x) {
   
   $.ajax({
-    url: "http://motyar.info/webscrapemaster/api/?url=https://www.instagram.com/"+x+"&xpath=//html/meta[@property=og:image]",
+    url: "https://motyar.info/webscrapemaster/api/?url=https://www.instagram.com/"+x+"&xpath=//html/meta[@property=og:image]",
     dataType: "jsonp",
     success: function( response ) {
         console.log( response ); 
