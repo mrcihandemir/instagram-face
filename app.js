@@ -8,6 +8,7 @@ var fs = require('fs');
 
 http.createServer(function(request, response) {
 
+	/*
 	if(request.url === "/"){
 		sendFileContent(response, "index.html", "text/html");
 	}
@@ -17,6 +18,14 @@ http.createServer(function(request, response) {
     console.log("Requested URL is: " + request.url);
 		response.end('else');
 	}
+	*/
+	
+	fs.readFile("index.html", function(err, data){
+  response.writeHead(200, {'Content-Type': 'text/html'});
+  response.write(data);
+  response.end();
+});
+	
 }).listen(3000);
 
 function sendFileContent(response, fileName, contentType){
@@ -60,8 +69,10 @@ const server = http.createServer((req, res) => {
 });
   
 
+/*
 server.listen(port,() => {
   console.log(`Server running at port `+port);
 });
+*/
 
 
