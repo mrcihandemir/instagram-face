@@ -1,7 +1,16 @@
-const http = require('http');
-const port = process.env.PORT || 3000
-var fs = require('fs'); 
+//const http = require('http');
+//const port = process.env.PORT || 3000
+//var fs = require('fs'); 
 
+var http = require('http')
+var url = require('url')
+var fs = require('fs')
+
+http.createServer(function (request, response) {
+    var requestUrl = url.parse(request.url)    
+    response.writeHead(200)
+    fs.createReadStream(requestUrl.pathname).pipe(response)  // do NOT use fs's sync methods ANYWHERE on production (e.g readFileSync) 
+}).listen(9615)   
 
 /*var http = require('http');  
 var url = require('url');  
@@ -37,7 +46,7 @@ http.createServer(function(request, response) {
 */
 
 
-
+/*
 const server = http.createServer((req, res) => {
 /*	
   res.statusCode = 200;
@@ -51,7 +60,7 @@ console.log(__dirname);
   sayfa = sayfa + '<h1>profile name: <input type="text" name="ip" id="ip"><br><button onclick="Getir(document.getElementById(\'ip\').value)">Getir</button></h1>';
   sayfa = sayfa + '</body></html>';
   res.end(sayfa);
-  */
+  *//*
 	
 	fs.readFile(__dirname +"/index.html", function(err, data){
   response.writeHead(200, {'Content-Type': 'text/html'});
@@ -61,12 +70,12 @@ console.log(__dirname);
 	
 	
 });
-  
+  */
 
-
+/*
 server.listen(port,() => {
   console.log(`Server running at port `+port);
 });
 
-
+*/
 
