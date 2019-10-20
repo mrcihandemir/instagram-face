@@ -2,6 +2,7 @@ const http = require('http');
 const port = process.env.PORT || 3000
 
 const server = http.createServer((req, res) => {
+  /*
   res.statusCode = 200;
   res.setHeader('Content-Type', 'text/html');
   var sayfa = '<html><head><title>instagram face</title>';
@@ -11,6 +12,8 @@ const server = http.createServer((req, res) => {
   sayfa = sayfa + '<h1>profile name: <input type="text" name="ip" id="ip"><br><button onclick="Getir(document.getElementById(\'ip\').value)">Getir</button></h1>';
   sayfa = sayfa + '</body></html>';
   res.end(sayfa);
+  */
+  res.writeHead(301, { Location: '/index.html' });
 });
   
 
