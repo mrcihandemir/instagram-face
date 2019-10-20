@@ -4,6 +4,37 @@ var http = require('http');
 var url = require('url');  
 var fs = require('fs'); 
 
+
+
+http.createServer(function(request, response) {
+
+	if(request.url === "/"){
+		sendFileContent(response, "index.html", "text/html");
+	}
+	else{
+		res.setHeader('Content-Type', 'text/html');
+    res.statusCode = 200;
+    console.log("Requested URL is: " + request.url);
+		response.end('else');
+	}
+}).listen(3000);
+
+function sendFileContent(response, fileName, contentType){
+	fs.readFile(fileName, function(err, data){
+		if(err){
+			response.writeHead(404);
+			response.write("Not Found!");
+		}
+		else{
+			response.writeHead(200, {'Content-Type': contentType});
+			response.write(data);
+		}
+		response.end();
+	});
+}
+
+
+/*
 const server = http.createServer((req, res) => {
   //var path = 'index.html';
   var path = url.parse(request.url).pathname;  
@@ -14,7 +45,7 @@ const server = http.createServer((req, res) => {
                 response.write(data);  
                 response.end();                  
             });  
-  /*
+  
   res.statusCode = 200;
   res.setHeader('Content-Type', 'text/html');
   var sayfa = '<html><head><title>instagram face</title>';
