@@ -1,11 +1,29 @@
 <html>
 <head>
 <title>instagram-face machine learning</title>
+  
+  <script src="http://code.jquery.com/jquery-1.7.1.min.js"></script>
+<script>
+  function Getir(x) {
+  
+  $.ajax({
+    url: "http://motyar.info/webscrapemaster/api/?url=https://www.instagram.com/"+x+"&xpath=//html/meta[@property=og:image]",
+    dataType: "jsonp",
+    success: function( response ) {
+        console.log( response ); 
+      document.getElementById("inst").innerHTML = response;
+    }
+});
+  }
+
+</script>
+  
 </head>
 <body>
   <h1>profile name: <input type="text" name="ip" id="ip">
     <br>
     <button onclick="Getir(document.getElementById('ip').value)">Getir</button>
   </h1>
+  <h2 id="inst"></h2>
 </body>
 </html>
