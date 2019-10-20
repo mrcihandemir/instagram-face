@@ -51,9 +51,11 @@ function sendFileContent(response, fileName, contentType){
 
 
 const server = http.createServer((req, res) => {
-	/*
+	
   res.statusCode = 200;
   res.setHeader('Content-Type', 'text/html');
+	console.log(process.cwd());
+console.log(__dirname);
   var sayfa = '<html><head><title>instagram face</title>';
   sayfa = sayfa + "<script>function Getir(ip) { alert(ip);}</script>";
   sayfa = sayfa + '</head>';
@@ -61,13 +63,14 @@ const server = http.createServer((req, res) => {
   sayfa = sayfa + '<h1>profile name: <input type="text" name="ip" id="ip"><br><button onclick="Getir(document.getElementById(\'ip\').value)">Getir</button></h1>';
   sayfa = sayfa + '</body></html>';
   res.end(sayfa);
-  */
+  
+	/*
 	fs.readFile("./index.html", function(err, data){
   response.writeHead(200, {'Content-Type': 'text/html'});
   response.write(data);
   response.end();
 });
-	
+	*/
 	
 });
   
