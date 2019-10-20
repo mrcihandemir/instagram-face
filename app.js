@@ -1,5 +1,6 @@
 const http = require('http');
 const port = process.env.PORT || 3000
+var fs = require('fs'); 
 
 /*var http = require('http');  
 var url = require('url');  
@@ -50,6 +51,7 @@ function sendFileContent(response, fileName, contentType){
 
 
 const server = http.createServer((req, res) => {
+	/*
   res.statusCode = 200;
   res.setHeader('Content-Type', 'text/html');
   var sayfa = '<html><head><title>instagram face</title>';
@@ -59,6 +61,14 @@ const server = http.createServer((req, res) => {
   sayfa = sayfa + '<h1>profile name: <input type="text" name="ip" id="ip"><br><button onclick="Getir(document.getElementById(\'ip\').value)">Getir</button></h1>';
   sayfa = sayfa + '</body></html>';
   res.end(sayfa);
+  */
+	fs.readFile("index.html", function(err, data){
+  response.writeHead(200, {'Content-Type': 'text/html'});
+  response.write(data);
+  response.end();
+});
+	
+	
 });
   
 
