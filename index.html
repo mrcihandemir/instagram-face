@@ -1,13 +1,14 @@
 <html>
 <head>
 <title>instagram-face machine learning</title>
+  <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests"> 
   
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 <script>
   function Getir(x) {
   
   $.ajax({
-    url: "https://motyar.info/webscrapemaster/api/?url=https://www.instagram.com/"+x+"&xpath=//html/meta[@property=og:image]",
+    url: "http://motyar.info/webscrapemaster/api/?url=https://www.instagram.com/"+x+"&xpath=//html/meta[@property=og:image]",
     dataType: "jsonp",
     success: function( response ) {
         console.log( response ); 
