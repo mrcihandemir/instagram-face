@@ -11,7 +11,7 @@
     url: "https://jsonp.afeld.me/?url=http%3A%2F%2Fmotyar.info%2Fwebscrapemaster%2Fapi%2F%3Furl%3Dhttps%3A%2F%2Fwww.instagram.com%2F"+x+"%26xpath%3D%2F%2Fhtml%2Fmeta%5B%40property%3Dog%3Aimage%5D",
     dataType: "json",
     success: function( response ) {
-        document.getElementById("inst").innerHTML = '<img src="' + response[0].content + '">';
+        document.getElementById("inst").innerHTML = '<img id="srcImg" src="' + response[0].content + '">';
         const detections =  faceapi.detectAllFaces(response[0].content);
         console.log(detections);
     }
@@ -27,5 +27,76 @@
     <button onclick="Getir(document.getElementById('ip').value)">Getir</button>
   </h1>
   <h2 id="inst"></h2>
+
+  <script>
+
+    async function uploadRefImage(e) {
+      const imgFile = $('#srcImg').get(0).files[0]
+      const img = await faceapi.bufferToImage(imgFile)
+      $('#refImg').get(0).src = img.src
+      updateReferenceImageResults()
+    }
+    
+    async function uploadQueryImage(e) {
+      const imgFile = $('#queryImgUploadInput').get(0).files[0]
+      const img = await faceapi.bufferToImage(imgFile)
+      $('#queryImg').get(0).src = img.src
+      updateQueryImageResults()
+    }
+    
+    async function loadQueryImageFromUrl(url) {
+      const img = await requestExternalImage($('#queryImgUrlInput').val())
+      $('#queryImg').get(0).src = img.src
+      updateQueryImageResults()
+    }
+    
+    async function updateReferenceImageResults() {
+      const inputImgEl = $('#refImg').get(0)
+      const canvas = $('#refImgOverlay').get(0)
+      const fullFaceDescriptions = await faceapi
+        .detectAllFaces(inputImgEl, getFaceDetectorOptions())
+        .withFaceLandmarks()
+        .withFaceDescriptors()
+    }
+    
+    async function updateQueryImageResults() {
+      if (!faceMatcher) {
+        return
+      }
+      const inputImgEl = $('#queryImg').get(0)
+      const canvas = $('#queryImgOverlay').get(0)
+      const results = await faceapi
+        .detectAllFaces(inputImgEl, getFaceDetectorOptions())
+        .withFaceLandmarks()
+        .withFaceDescriptors()
+      faceapi.matchDimensions(canvas, inputImgEl)
+      // resize detection and landmarks in case displayed image is smaller than
+      // original size
+      const resizedResults = faceapi.resizeResults(results, inputImgEl)
+      resizedResults.forEach(({ detection, descriptor }) => {
+        const label = faceMatcher.findBestMatch(descriptor).toString()
+        const options = { label }
+        const drawBox = new faceapi.draw.DrawBox(detection.box, options)
+        drawBox.draw(canvas)
+      })
+    }
+    async function updateResults() {
+      await updateReferenceImageResults()
+      await updateQueryImageResults()
+    }
+    async function run() {
+      // load face detection, face landmark model and face recognition models
+      await changeFaceDetector(selectedFaceDetector)
+      await faceapi.loadFaceLandmarkModel('/')
+      await faceapi.loadFaceRecognitionModel('/')
+    }
+    /*
+    $(document).ready(function() {
+      renderNavBar('#navbar', 'face_recognition')
+      initFaceDetectionControls()
+      run()
+    })
+    */
+  </script>
 </body>
 </html>
