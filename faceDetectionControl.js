@@ -9,64 +9,11 @@ function getFaceDetectorOptions() {
       new faceapi.TinyFaceDetectorOptions({ inputSize, scoreThreshold })
 }
 
-function onIncreaseMinConfidence() {
-  minConfidence = Math.min(faceapi.round(minConfidence + 0.1), 1.0)
-  $('#minConfidence').val(minConfidence)
-  updateResults()
-}
 
-function onDecreaseMinConfidence() {
-  minConfidence = Math.max(faceapi.round(minConfidence - 0.1), 0.1)
-  $('#minConfidence').val(minConfidence)
-  updateResults()
-}
-
-function onInputSizeChanged(e) {
-  changeInputSize(e.target.value)
-  updateResults()
-}
-
-function changeInputSize(size) {
-  inputSize = parseInt(size)
-
-  const inputSizeSelect = $('#inputSize')
-  inputSizeSelect.val(inputSize)
-  inputSizeSelect.material_select()
-}
-
-function onIncreaseScoreThreshold() {
-  scoreThreshold = Math.min(faceapi.round(scoreThreshold + 0.1), 1.0)
-  $('#scoreThreshold').val(scoreThreshold)
-  updateResults()
-}
-
-function onDecreaseScoreThreshold() {
-  scoreThreshold = Math.max(faceapi.round(scoreThreshold - 0.1), 0.1)
-  $('#scoreThreshold').val(scoreThreshold)
-  updateResults()
-}
-
-function onIncreaseMinFaceSize() {
-  minFaceSize = Math.min(faceapi.round(minFaceSize + 20), 300)
-  $('#minFaceSize').val(minFaceSize)
-}
-
-function onDecreaseMinFaceSize() {
-  minFaceSize = Math.max(faceapi.round(minFaceSize - 20), 50)
-  $('#minFaceSize').val(minFaceSize)
-}
 
 function getCurrentFaceDetectionNet() {
-  if (selectedFaceDetector === SSD_MOBILENETV1) {
-    return faceapi.nets.ssdMobilenetv1
-  }
-  if (selectedFaceDetector === TINY_FACE_DETECTOR) {
     return faceapi.nets.tinyFaceDetector
-  }
-  if (selectedFaceDetector === MTCNN) {
-    return faceapi.nets.mtcnn
-  }
-}
+ }
 
 function isFaceDetectionModelLoaded() {
   return !!getCurrentFaceDetectionNet().params
