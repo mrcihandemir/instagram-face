@@ -12,7 +12,7 @@
     dataType: "json",
     success: function( response ) {
         document.getElementById("inst").innerHTML = '<img src="' + response[0].content + '">';
-        const detections = await faceapi.detectAllFaces(response[0].content);
+        const detections =  faceapi.detectAllFaces(response[0].content);
         console.log(detections);
     }
 });
