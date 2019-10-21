@@ -32,8 +32,6 @@ function getFaceDetectorOptions() {
       new faceapi.TinyFaceDetectorOptions({ inputSize, scoreThreshold })
 }
 
-
-
 function getCurrentFaceDetectionNet() {
     return faceapi.nets.tinyFaceDetector
  }
@@ -43,21 +41,11 @@ function isFaceDetectionModelLoaded() {
 }
 
 async function changeFaceDetector(detector) {
-  ['#ssd_mobilenetv1_controls', '#tiny_face_detector_controls', '#mtcnn_controls']
-    .forEach(id => $(id).hide())
+  
 
-  selectedFaceDetector = detector
-  const faceDetectorSelect = $('#selectFaceDetector')
-  faceDetectorSelect.val(detector)
-  faceDetectorSelect.material_select()
-
-  $('#loader').show()
   if (!isFaceDetectionModelLoaded()) {
     await getCurrentFaceDetectionNet().load('/')
   }
-
-  $(`#${detector}_controls`).show()
-  $('#loader').hide()
 }
 
 async function onSelectedFaceDetectorChanged(e) {
