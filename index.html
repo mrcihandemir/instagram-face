@@ -56,9 +56,8 @@
      
   </h1>
   <h2 id="inst"></h2>
-  <img id="gandhi" src="gandhi.jpg" >
-  <canvas id="cnvimg" class="overlay"/>
-  <canvas id="cnvimg2" class="overlay"/>
+  <img id="gandhi" src="gandhi.jpg">
+  <canvas id="cnvimg" >
 
 
   
@@ -120,25 +119,34 @@
     // yeni yazıldı
     async function updateReferenceImageResults() {
       console.log("updateReferenceImageResults()");
-      await createCanvasImage();  
+      /*
+      //await createCanvasImage();  
       console.log("ok");
       
-      //const inputImgEl = $('#cnvimg').get(0);
+      const inputImgEl = $('#cnvimg').get(0);
       const options = getFaceDetectorOptions();
       console.log(options);
       //console.log(inputImgEl);
       //const canvas = $('#refImgOverlay').get(0)
       //var inp = document.getElementById("gandhi").src;
       
-      const inputImgEl = document.getElementById("gandhi").src;
+      //const inputImgEl = document.getElementById("gandhi").src;
       const detections = await faceapi.detectAllFaces(inputImgEl,options);
       console.log("detections");
       console.log(detections);
-      const canvas = $('#cnvimg2').get(0)
+      const canvas = $('#cnvimg').get(0)
       //faceapi.matchDimensions(canvas, inputImgEl)
       faceapi.matchDimensions(canvas, inputImgEl)
       //faceapi.draw.drawDetections(canvas, faceapi.resizeResults(results, inputImgEl))
       faceapi.draw.drawDetections(canvas, faceapi.resizeResults(detections, inputImgEl))
+      */
+      const inputImgEl = $('#gandhi').get(0);
+      const options = getFaceDetectorOptions();
+      console.log(options);
+      const results = await faceapi.detectAllFaces(inputImgEl, options);
+      const canvas = $('#cnvimg').get(0);
+      faceapi.matchDimensions(canvas, inputImgEl);
+      faceapi.draw.drawDetections(canvas, faceapi.resizeResults(results, inputImgEl));
     }
     
     async function updateQueryImageResults() {
