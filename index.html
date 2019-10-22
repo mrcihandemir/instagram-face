@@ -151,9 +151,8 @@ function initFaceDetectionControls() {
       console.log("updateReferenceImageResults()");
       const inputImgEl = $('#refImg').get(0)
       const canvas = $('#refImgOverlay').get(0)
-      const fullFaceDescriptions = await faceapi
-        .detectAllFaces(inputImgEl, getFaceDetectorOptions())
-        .withFaceDescriptors()
+      const detections = await faceapi.detectAllFaces(inputImgEl);
+      console.log(detections);
     }
     
     async function updateQueryImageResults() {
