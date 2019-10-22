@@ -22,7 +22,8 @@
   <script>
       Promise.all([
         faceapi.nets.faceRecognitionNet.loadFromUri('/'),
-        faceapi.nets.tinyFaceDetector.loadFromUri('/')                                            
+        faceapi.nets.tinyFaceDetector.loadFromUri('/'),
+        faceapi.nets.ssdMobilenetv1.loadFromUri('/')                                            
         ]).then(start)
     
       function start() {console.log("started");}
@@ -133,6 +134,7 @@ function initFaceDetectionControls() {
       updateQueryImageResults()
     }
     
+    /*
     async function updateReferenceImageResults() {
       console.log("updateReferenceImageResults()");
       const inputImgEl = $('#refImg').get(0)
@@ -140,6 +142,17 @@ function initFaceDetectionControls() {
       const fullFaceDescriptions = await faceapi
         .detectAllFaces(inputImgEl, getFaceDetectorOptions())
         .withFaceLandmarks()
+        .withFaceDescriptors()
+    }
+    */
+    
+    // yeni yazıldı
+    async function updateReferenceImageResults() {
+      console.log("updateReferenceImageResults()");
+      const inputImgEl = $('#refImg').get(0)
+      const canvas = $('#refImgOverlay').get(0)
+      const fullFaceDescriptions = await faceapi
+        .detectAllFaces(inputImgEl, getFaceDetectorOptions())
         .withFaceDescriptors()
     }
     
