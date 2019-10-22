@@ -1,7 +1,7 @@
 const express = require('express');
 const app = express(); 
 const port = process.env.PORT || 80
-const { get } = require('request')
+const { get } = require('request');
 
 
 app.use(express.static('/app'));
