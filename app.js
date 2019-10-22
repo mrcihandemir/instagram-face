@@ -2,7 +2,7 @@ const express = require('express');
 const app = express(); 
 const port = process.env.PORT || 80
 
-app.use(express.static('app'));
+app.use(express.static('/app'));
 
 app.get('/', function (req, res) {
   // res.send('Hello World');
@@ -11,5 +11,5 @@ app.get('/', function (req, res) {
 });
 
 app.listen(port, function(){
-  console.log("Listening on port 3000!")
+  console.log("Listening port!")
 });
