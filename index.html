@@ -106,6 +106,7 @@ function initFaceDetectionControls() {
      
   </h1>
   <h2 id="inst"></h2>
+  <h2 id="tmp64"></h2>
   <img id="gandhi" src="gandhi.jpg">
       
 
@@ -149,7 +150,17 @@ function initFaceDetectionControls() {
     // yeni yazıldı
     async function updateReferenceImageResults() {
       console.log("updateReferenceImageResults()");
-      const inputImgEl = $('#gandhi').get(0);
+          var c = document.createElement('cnvs');
+          var img = document.getElementById('gandhi');
+          c.height = img.naturalHeight;
+          c.width = img.naturalWidth;
+          var ctx = c.getContext('2d');
+          ctx.drawImage(img, 0, 0, c.width, c.height);
+          var base64String = c.toDataURL();
+      console.log(base64String);
+          document.getElementById("tmp64").innerHTML = '<img id="gandhi64" src="data:image/png;base64, '+base64String+'">';
+      
+      const inputImgEl = $('#gandhi64').get(0);
       const options = getFaceDetectorOptions();
       console.log(options);
       console.log(inputImgEl);
