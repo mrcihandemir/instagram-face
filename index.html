@@ -136,8 +136,9 @@ function initFaceDetectionControls() {
     
     async function loadQueryImageFromUrl(url) {
       console.log("loadQueryImageFromUrl()");
-      const img = await requestExternalImage(url)
-      $('#gandhi64').get(0).src = img.src
+      console.log(url);
+      const extimg = await requestExternalImage(url);
+      $('#gandhi64').get(0).src = extimg.src
       updateReferenceImageResults()
     }
     
