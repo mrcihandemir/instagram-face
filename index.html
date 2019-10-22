@@ -18,6 +18,7 @@
   </style>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
   <script src="face-api.js"></script>
+  <script src="common.js"></script>
   
   <script>
       Promise.all([
@@ -36,7 +37,7 @@
     url: "https://jsonp.afeld.me/?url=http%3A%2F%2Fmotyar.info%2Fwebscrapemaster%2Fapi%2F%3Furl%3Dhttps%3A%2F%2Fwww.instagram.com%2F"+x+"%26xpath%3D%2F%2Fhtml%2Fmeta%5B%40property%3Dog%3Aimage%5D",
     dataType: "json",
     success: function( response ) {
-        document.getElementById("inst").innerHTML = '<img id="refImg" src="' + response[0].content + '">';
+        await document.getElementById("inst").innerHTML = '<img id="refImg" src="' + response[0].content + '">';
         updateResults();
         run();
     }
@@ -135,9 +136,9 @@ function initFaceDetectionControls() {
     
     async function loadQueryImageFromUrl(url) {
       console.log("loadQueryImageFromUrl()");
-      const img = await requestExternalImage($('#queryImgUrlInput').val())
-      $('#queryImg').get(0).src = img.src
-      updateQueryImageResults()
+      const img = await requestExternalImage(url)
+      $('#gandhi64').get(0).src = img.src
+      updateReferenceImageResults()
     }
     
     /*
@@ -203,7 +204,8 @@ function initFaceDetectionControls() {
     }
     async function updateResults() {
       console.log("updateResults()");
-      await updateReferenceImageResults()
+      await loadQueryImageFromUrl(document.getElementById("refImg").src);
+      //await updateReferenceImageResults()
       //await updateQueryImageResults()
     }
     async function run() {
