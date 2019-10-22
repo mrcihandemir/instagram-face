@@ -33,6 +33,8 @@ function getFaceDetectorOptions() {
 }
 
 function getCurrentFaceDetectionNet() {
+  console.log("gcfdn");
+  console.log(faceapi.nets.tinyFaceDetector);
     return faceapi.nets.tinyFaceDetector
  }
 
@@ -41,9 +43,10 @@ function isFaceDetectionModelLoaded() {
 }
 
 async function changeFaceDetector(detector) {
-  
+  console.log("cfd");
 
   if (!isFaceDetectionModelLoaded()) {
+     console.log("nifdml");
     await getCurrentFaceDetectionNet().load('/')
   }
 }
