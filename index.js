@@ -7,7 +7,7 @@ let inputSize = 128
 let scoreThreshold = 0.5
 
 function getFaceDetectorOptions() {
-      new faceapi.TinyFaceDetectorOptions({ inputSize, scoreThreshold })
+      return new faceapi.TinyFaceDetectorOptions({ inputSize, scoreThreshold })
 }
 
 function getCurrentFaceDetectionNet() {
