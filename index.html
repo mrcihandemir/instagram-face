@@ -133,7 +133,7 @@
       const detections = await faceapi.detectAllFaces(inputImgEl,options);
       console.log("detections");
       console.log(detections);
-      const canvas = $('#cnvimg').get(0)
+      const canvas = $('#cnvimg2').get(0)
       //faceapi.matchDimensions(canvas, inputImgEl)
       faceapi.matchDimensions(canvas, inputImgEl)
       //faceapi.draw.drawDetections(canvas, faceapi.resizeResults(results, inputImgEl))
