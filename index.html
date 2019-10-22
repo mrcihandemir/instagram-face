@@ -180,7 +180,8 @@ function initFaceDetectionControls() {
       //const canvas = $('#refImgOverlay').get(0)
       //var inp = document.getElementById("gandhi").src;
       
-      const detections = await faceapi.detectAllFaces(img,options);
+      const detections = await faceapi.detectAllFaces(inputImgEl,options);
+      console.log("detections");
       console.log(detections);
       const canvas = $('#cnvimg').get(0)
       //faceapi.matchDimensions(canvas, inputImgEl)
