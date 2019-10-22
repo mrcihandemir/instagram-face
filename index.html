@@ -149,11 +149,13 @@ function initFaceDetectionControls() {
     // yeni yazıldı
     async function updateReferenceImageResults() {
       console.log("updateReferenceImageResults()");
-      const inputImgEl = $('#gandhi').get(0).src;
+      const inputImgEl = $('#gandhi').get(0);
+      const options = getFaceDetectorOptions();
+      console.log(options);
       console.log(inputImgEl);
       //const canvas = $('#refImgOverlay').get(0)
       //var inp = document.getElementById("gandhi").src;
-      const detections = await faceapi.detectAllFaces(inputImgEl);
+      const detections = await faceapi.detectAllFaces(inputImgEl,options);
       console.log(detections);
     }
     
