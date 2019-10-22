@@ -80,6 +80,7 @@ function initFaceDetectionControls() {
   <script>
 
     async function uploadRefImage(e) {
+      console.log("uploadRefImage()");
       const imgFile = $('#srcImg').get(0).files[0]
       const img = await faceapi.bufferToImage(imgFile)
       $('#refImg').get(0).src = img.src
@@ -87,6 +88,7 @@ function initFaceDetectionControls() {
     }
     
     async function uploadQueryImage(e) {
+      console.log("uploadQueryImage()");
       const imgFile = $('#queryImgUploadInput').get(0).files[0]
       const img = await faceapi.bufferToImage(imgFile)
       $('#queryImg').get(0).src = img.src
@@ -94,12 +96,14 @@ function initFaceDetectionControls() {
     }
     
     async function loadQueryImageFromUrl(url) {
+      console.log("loadQueryImageFromUrl()");
       const img = await requestExternalImage($('#queryImgUrlInput').val())
       $('#queryImg').get(0).src = img.src
       updateQueryImageResults()
     }
     
     async function updateReferenceImageResults() {
+      console.log("updateReferenceImageResults()");
       const inputImgEl = $('#refImg').get(0)
       const canvas = $('#refImgOverlay').get(0)
       const fullFaceDescriptions = await faceapi
@@ -109,9 +113,7 @@ function initFaceDetectionControls() {
     }
     
     async function updateQueryImageResults() {
-      if (!faceMatcher) {
-        return
-      }
+      console.log("updateQueryImageResults()");
       const inputImgEl = $('#queryImg').get(0)
       const canvas = $('#queryImgOverlay').get(0)
       const results = await faceapi
@@ -130,6 +132,7 @@ function initFaceDetectionControls() {
       })
     }
     async function updateResults() {
+      console.log("updateResults()");
       await updateReferenceImageResults()
       await updateQueryImageResults()
     }
