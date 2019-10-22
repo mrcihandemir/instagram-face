@@ -175,6 +175,9 @@ function initFaceDetectionControls() {
       //var inp = document.getElementById("gandhi").src;
       const detections = await faceapi.detectAllFaces(inputImgEl,options);
       console.log(detections);
+      const canvas = $('#gandhi64').get(0)
+      faceapi.matchDimensions(canvas, inputImgEl)
+      faceapi.draw.drawDetections(canvas, faceapi.resizeResults(results, inputImgEl))
     }
     
     async function updateQueryImageResults() {
