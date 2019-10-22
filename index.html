@@ -19,6 +19,15 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
   <script src="face-api.js"></script>
   
+  <script>
+      Promise.all([
+        faceapi.nets.faceRecognitionNet.loadFromUri('/),
+        faceapi.nets.tinyFaceDetector.loadFromUri('/),                                            
+        ]).then(start)
+    
+      function start() {console.log("started");}
+  </script>
+  
 <script>
   function Getir(x) {
   
