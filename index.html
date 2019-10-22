@@ -143,7 +143,7 @@
       const inputImgEl = $('#gandhi').get(0);
       const options = getFaceDetectorOptions();
       console.log(options);
-      const results = await faceapi.detectAllFaces(inputImgEl, options);
+      const results = await faceapi.detectAllFaces(inputImgEl, options).withAgeAndGender().withFaceDescriptors();
       const canvas = $('#cnvimg').get(0);
       faceapi.matchDimensions(canvas, inputImgEl);
       faceapi.draw.drawDetections(canvas, faceapi.resizeResults(results, inputImgEl));
