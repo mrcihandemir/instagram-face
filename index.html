@@ -12,6 +12,7 @@
     dataType: "json",
     success: function( response ) {
         document.getElementById("inst").innerHTML = '<img id="srcImg" src="' + response[0].content + '">';
+        updateResults();
         run();
     }
 });
