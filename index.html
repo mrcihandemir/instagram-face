@@ -25,7 +25,10 @@
       Promise.all([
         faceapi.nets.faceRecognitionNet.loadFromUri('/'),
         faceapi.nets.tinyFaceDetector.loadFromUri('/'),
-        faceapi.nets.ssdMobilenetv1.loadFromUri('/')                                            
+        faceapi.nets.ssdMobilenetv1.loadFromUri('/'),  
+        faceapi.nets.ageGenderNet.loadFromUri('/'),
+        faceapi.nets.FaceLandmark68TinyNet.loadFromUri('/'),
+        faceapi.nets.FaceExpressions.loadFromUri('/')
         ]).then(start)
     
       function start() {console.log("started");}
