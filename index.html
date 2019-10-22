@@ -136,10 +136,14 @@ function initFaceDetectionControls() {
     
     async function loadQueryImageFromUrl(url) {
       console.log("loadQueryImageFromUrl()");
+      /*
       console.log(url);
       const extimg = await requestExternalImage(url);
       $('#gandhi64').get(0).src = extimg.src
-      updateReferenceImageResults()
+      
+      */
+      updateReferenceImageResults();
+      
     }
     
     /*
@@ -165,23 +169,29 @@ function initFaceDetectionControls() {
         console.log("start canvas");
     }
     
+    
     // yeni yazıldı
-    async function updateReferenceImageResults() {
+    async function updateReferenceImageResults(url) {
       console.log("updateReferenceImageResults()");
-      await createCanvasImage();  
+      //await createCanvasImage();  
+      const img = await canvas.loadImage( url );
       console.log("ok");
+      /*
       const inputImgEl = $('#gandhi64').get(0);
       const options = getFaceDetectorOptions();
       console.log(options);
       console.log(inputImgEl);
       //const canvas = $('#refImgOverlay').get(0)
       //var inp = document.getElementById("gandhi").src;
-      const detections = await faceapi.detectAllFaces(inputImgEl,options);
+      
+      */
+      const detections = await faceapi.detectAllFaces(img,options);
       console.log(detections);
       const canvas = $('#gandhi64').get(0)
-      faceapi.matchDimensions(canvas, inputImgEl)
+      //faceapi.matchDimensions(canvas, inputImgEl)
+      faceapi.matchDimensions(canvas, img)
       //faceapi.draw.drawDetections(canvas, faceapi.resizeResults(results, inputImgEl))
-      faceapi.draw.drawDetections(canvas, faceapi.resizeResults(detections, inputImgEl))
+      faceapi.draw.drawDetections(canvas, faceapi.resizeResults(detections, img))
     }
     
     async function updateQueryImageResults() {
