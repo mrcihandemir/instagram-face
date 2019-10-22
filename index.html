@@ -56,6 +56,7 @@
      
   </h1>
   <h2 id="inst"></h2>
+  <img id="gandhi" src="gandhi.jpg" style="display:none;" >
   <canvas id="cnvimg" class="overlay"/>
 
 
@@ -109,8 +110,7 @@
         console.log("begin canvas");
         var c = document.getElementById("cnvimg");
         var ctx = c.getContext("2d");
-        //var img = document.getElementById("refImg"); 
-        var img = "gandhi.jpg";
+        var img = document.getElementById("gandhi"); 
         ctx.drawImage(img, 100, 100);
         console.log("end canvas");
     }
