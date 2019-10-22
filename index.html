@@ -152,14 +152,21 @@ function initFaceDetectionControls() {
     }
     */
     
-    // yeni yazıldı
-    async function updateReferenceImageResults() {
-      console.log("updateReferenceImageResults()");
-         var c = document.getElementById("gandhi64");
+    //yeni yazıldı
+    async function createCanvasImage() {
+        console.log("start canvas");
+        var c = document.getElementById("gandhi64");
         var ctx = c.getContext("2d");
         var img = document.getElementById("gandhi");
         ctx.drawImage(img, 10, 10);
-      
+        console.log("start canvas");
+    }
+    
+    // yeni yazıldı
+    async function updateReferenceImageResults() {
+      console.log("updateReferenceImageResults()");
+      await createCanvasImage();  
+      console.log("ok");
       const inputImgEl = $('#gandhi64').get(0);
       const options = getFaceDetectorOptions();
       console.log(options);
