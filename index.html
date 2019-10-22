@@ -107,10 +107,7 @@ function initFaceDetectionControls() {
      
   </h1>
   <h2 id="inst"></h2>
-  <h2 id="tmp64"></h2>
-  <img id="gandhi" src="gandhi.jpg">
- 
-<canvas id="gandhi64"></canvas>
+  <canvas id="cnvimg" class="overlay"/>
 
 
   
@@ -160,40 +157,36 @@ function initFaceDetectionControls() {
     
     //yeni yazıldı
     async function createCanvasImage() {
-        console.log("start canvas");
-        var c = document.getElementById("gandhi64");
+        console.log("begin canvas");
+        var c = document.getElementById("cnvimg");
         var ctx = c.getContext("2d");
         //var img = document.getElementById("gandhi");
-        var img = document.getElementById("inst"); 
-        ctx.drawImage(img, 10, 10);
-        console.log("start canvas");
+        var img = document.getElementById("refImg"); 
+        ctx.drawImage(img, 100, 100);
+        console.log("end canvas");
     }
     
     
     // yeni yazıldı
-    async function updateReferenceImageResults(url) {
+    async function updateReferenceImageResults() {
       console.log("updateReferenceImageResults()");
-      //await createCanvasImage();  
-      const { Canvas, Image, ImageData } = canvas;
-      faceapi.env.monkeyPatch({ Canvas, Image, ImageData });
-      const img = await canvas.loadImage( url );
+      await createCanvasImage();  
       console.log("ok");
-      /*
-      const inputImgEl = $('#gandhi64').get(0);
+      
+      const inputImgEl = $('#cnvimg').get(0);
       const options = getFaceDetectorOptions();
       console.log(options);
       console.log(inputImgEl);
       //const canvas = $('#refImgOverlay').get(0)
       //var inp = document.getElementById("gandhi").src;
       
-      */
       const detections = await faceapi.detectAllFaces(img,options);
       console.log(detections);
-      const canvas = $('#gandhi64').get(0)
+      const canvas = $('#cnvimg').get(0)
       //faceapi.matchDimensions(canvas, inputImgEl)
-      faceapi.matchDimensions(canvas, img)
+      faceapi.matchDimensions(canvas, inputImgEl)
       //faceapi.draw.drawDetections(canvas, faceapi.resizeResults(results, inputImgEl))
-      faceapi.draw.drawDetections(canvas, faceapi.resizeResults(detections, img))
+      faceapi.draw.drawDetections(canvas, faceapi.resizeResults(detections, inputImgEl))
     }
     
     async function updateQueryImageResults() {
@@ -217,8 +210,8 @@ function initFaceDetectionControls() {
     }
     async function updateResults() {
       console.log("updateResults()");
-      await loadQueryImageFromUrl(document.getElementById("refImg").src);
-      //await updateReferenceImageResults()
+      //await loadQueryImageFromUrl(document.getElementById("refImg").src);
+      await updateReferenceImageResults()
       //await updateQueryImageResults()
     }
     async function run() {
