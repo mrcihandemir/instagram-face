@@ -1,4 +1,6 @@
 async function requestExternalImage(imageUrl) {
+  console.log("POSTMAN");
+  console.log(JSON.stringify({ imageUrl }));
   const res = await fetch('fetch_external_image', {
     method: 'POST',
     headers: {
