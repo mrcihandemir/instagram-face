@@ -58,7 +58,6 @@
     <button onclick="Getir(document.getElementById('ip').value)">Getir</button>
      
   </h1>
-  <h2 id="inst"></h2>
   <img id="gandhi" src="gandhi.jpg">
   <canvas id="cnvimg" >
 
@@ -114,7 +113,7 @@
         var c = document.getElementById("cnvimg");
         var ctx = c.getContext("2d");
         var img = document.getElementById("gandhi"); 
-        ctx.drawImage(img, 100, 100);
+        ctx.drawImage(img, 0, 0);
         console.log("end canvas");
     }
     
@@ -146,7 +145,7 @@
       const inputImgEl = $('#gandhi').get(0);
       const options = getFaceDetectorOptions();
       console.log(options);
-      const results = await faceapi.detectAllFaces(inputImgEl, options).withFaceLandmarks().withAgeAndGender().withFaceDescriptors();
+      const results = await faceapi.detectAllFaces(inputImgEl, options).withFaceLandmarks().withFaceExpressions().withAgeAndGender().withFaceDescriptors();
       console.log("result");
       console.log(results);
       const canvas = $('#cnvimg').get(0);
