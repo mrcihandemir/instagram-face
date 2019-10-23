@@ -2,7 +2,7 @@ async function requestExternalImage(imageUrl) {
   const res = await fetch('fetch_external_image', {
     method: 'post',
     headers: {
-      'content-type': 'application/json'
+      'Content-Type': 'application/json'
     },
     body: JSON.stringify({ imageUrl })
   })
