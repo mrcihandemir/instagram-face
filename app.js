@@ -21,6 +21,18 @@ app.listen(port, function(){
 });
 
 
+app.use(function(req, res, next) {
+  res.header("Access-Control-Allow-Origin", "*");
+  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+  next();
+});
+app.use(require("body-parser").json());
+
+
+
+
+
+
 app.post('/fetch_external_image', async (req, res) => {
   console.log("req.body başla");
   console.log(req.body);
