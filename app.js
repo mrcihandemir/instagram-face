@@ -24,6 +24,7 @@ app.listen(port, function(){
 app.post('/fetch_external_image', async (req, res) => {
   console.log("req.body başla");
   console.log(req.body);
+  console.log(req);
   console.log("req.body bitir");
   const { imageUrl } = req.body  
   if (!imageUrl) {
