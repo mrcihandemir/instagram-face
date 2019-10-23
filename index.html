@@ -142,6 +142,9 @@
       //faceapi.draw.drawDetections(canvas, faceapi.resizeResults(results, inputImgEl))
       faceapi.draw.drawDetections(canvas, faceapi.resizeResults(detections, inputImgEl))
       */
+      
+      /*
+      bu kısım çalışıyor
       const inputImgEl = $('#gandhi').get(0);
       const options = getFaceDetectorOptions();
       console.log(options);
@@ -151,7 +154,25 @@
       const canvas = $('#cnvimg').get(0);
       faceapi.matchDimensions(canvas, inputImgEl);
       faceapi.draw.drawDetections(canvas, faceapi.resizeResults(results, inputImgEl));
-    }
+      */
+      
+      const img = $('#gandhi').get(0);
+      const options = getFaceDetectorOptions();
+      const out = $('#cnvimg').get(0);
+      const results = await faceapi.detectAllFaces(inputImgEl, options).withFaceLandmarks().withFaceExpressions().withAgeAndGender().withFaceDescriptors();
+      faceapi.draw.drawDetections(out, results.map(res => res.detection))
+      results.forEach(result => {
+        const { age, gender, genderProbability } = result
+        new faceapi.draw.DrawTextField(
+          [
+            '${gender},${faceapi.round(age, 0)}'
+          ],
+          result.detection.box.bottomLeft
+        ).draw(out)
+       });
+      
+      
+        }
     
     async function updateQueryImageResults() {
       console.log("updateQueryImageResults()");
