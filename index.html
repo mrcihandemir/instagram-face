@@ -159,7 +159,7 @@
       const img = $('#gandhi').get(0);
       const options = getFaceDetectorOptions();
       const out = $('#cnvimg').get(0);
-      const results = await faceapi.detectAllFaces(inputImgEl, options).withFaceLandmarks().withFaceExpressions().withAgeAndGender().withFaceDescriptors();
+      const results = await faceapi.detectAllFaces(img, options).withFaceLandmarks().withFaceExpressions().withAgeAndGender().withFaceDescriptors();
       faceapi.draw.drawDetections(out, results.map(res => res.detection))
       results.forEach(result => {
         const { age, gender, genderProbability } = result
