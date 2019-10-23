@@ -109,12 +109,22 @@
     */
     
     //yeni yazıldı
-    async function createCanvasImage() {
-        console.log("begin canvas");
+    
+    async function clearCanvasImage() {
+        console.log("clear canvas");
         var c = document.getElementById("cnvimg");
         var ctx = c.getContext("2d");
         ctx.clearRect(0, 0, 150, 150);
         ctx.beginPath();
+        console.log("cleared canvas");
+    }
+    
+    
+    async function createCanvasImage() {
+        console.log("begin canvas");
+        await clearCanvasImage();
+        var c = document.getElementById("cnvimg");
+        var ctx = c.getContext("2d");
         var img = document.getElementById("gandhi"); 
         ctx.drawImage(img, 0, 0);
         console.log("end canvas");
