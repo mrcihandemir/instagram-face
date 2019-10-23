@@ -147,6 +147,8 @@
       const options = getFaceDetectorOptions();
       console.log(options);
       const results = await faceapi.detectAllFaces(inputImgEl, options).withFaceLandmarks().withAgeAndGender().withFaceDescriptors();
+      console.log("result");
+      console.log(results);
       const canvas = $('#cnvimg').get(0);
       faceapi.matchDimensions(canvas, inputImgEl);
       faceapi.draw.drawDetections(canvas, faceapi.resizeResults(results, inputImgEl));
