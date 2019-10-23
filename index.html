@@ -25,11 +25,11 @@
         faceapi.nets.faceExpressionNet.loadFromUri('/')
         ]).then(start)
     
-      function start() {console.log("started"); changeFaceDetector('ssd_mobilenetv1'); }
+      async function start() {console.log("started"); await run(); }
   </script>
   
 <script>
-  function Getir(x) {
+  async function Getir(x) {
   
   $.ajax({
     url: "https://jsonp.afeld.me/?url=http%3A%2F%2Fmotyar.info%2Fwebscrapemaster%2Fapi%2F%3Furl%3Dhttps%3A%2F%2Fwww.instagram.com%2F"+x+"%26xpath%3D%2F%2Fhtml%2Fmeta%5B%40property%3Dog%3Aimage%5D",
@@ -37,8 +37,8 @@
     success: function( response ) {
         //document.getElementById("inst").innerHTML = '<img id="refImg" src="' + response[0].content + '">';
         //document.getElementById("img").src = response[0].content;
-        loadImageFromUrl(response[0].content);
-        updateResults();
+        await loadImageFromUrl(response[0].content);
+        await updateResults();
         //run();
     }
 });
