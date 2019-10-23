@@ -50,10 +50,13 @@
 </head>
 <body>
   <h1>profile name: <input type="text" name="ip" id="ip"><button onclick="Getir(document.getElementById('ip').value)">Getir</button></h1>
-  <img id="gandhi" src="gandhi.jpg">
-  <canvas id="cnvimg" width="150" height="150">
+  <div style="position: relative" class="margin">
+    <img id="gandhi" src="gandhi.jpg" width="150" height="150">
+    <canvas id="cnvimg" width="150" height="150" style="position: absolute;top: 0;left: 0;">
+  </div>
 
-
+    
+    
   
       
 
@@ -110,6 +113,7 @@
         console.log("begin canvas");
         var c = document.getElementById("cnvimg");
         var ctx = c.getContext("2d");
+        ctx.clearRect(0, 0, c.width, c.height);
         var img = document.getElementById("gandhi"); 
         ctx.drawImage(img, 0, 0);
         console.log("end canvas");
