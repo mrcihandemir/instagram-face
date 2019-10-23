@@ -22,10 +22,10 @@ app.listen(port, function(){
 
 
 app.post('/fetch_external_image', async (req, res) => {
-  const { imageUrl } = req.body
   console.log("req.body başla");
   console.log(req.body);
   console.log("req.body bitir");
+  const { imageUrl } = req.body  
   if (!imageUrl) {
     return res.status(400).send('imageUrl param required')
   }
