@@ -4,7 +4,8 @@ const app = express();
 const port = process.env.PORT || 80
 const { get } = require('request');
 //const fetch = require("node-fetch"); 
-global.fetch = require("node-fetch");
+//global.fetch = require("node-fetch");
+global.fetch = require('isomorphic-fetch');
 
 
 app.use(express.static('/app'));
