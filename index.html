@@ -28,7 +28,7 @@
         faceapi.nets.ssdMobilenetv1.loadFromUri('/'),  
         faceapi.nets.ageGenderNet.loadFromUri('/'),
         faceapi.nets.faceLandmark68Net.loadFromUri('/'),
-        faceapi.nets.FaceExpressions.loadFromUri('/')
+        faceapi.nets.faceExpressionNet.loadFromUri('/')
         ]).then(start)
     
       function start() {console.log("started");}
