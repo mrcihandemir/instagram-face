@@ -206,9 +206,9 @@
     }
     async function run() {
       // load face detection, face landmark model and face recognition models
-      await changeFaceDetector('tiny_face_detector')
+      await changeFaceDetector('ssd_mobilenetv1');
       //await faceapi.loadFaceLandmarkModel('/')
-      await faceapi.loadFaceRecognitionModel('/')
+      await faceapi.loadFaceRecognitionModel('/');
     }
     /*
     $(document).ready(function() {
