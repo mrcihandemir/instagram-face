@@ -168,6 +168,7 @@
       const options = getFaceDetectorOptions();
       const out = $('#cnvimg').get(0);
       const results = await faceapi.detectAllFaces(img, options).withFaceLandmarks().withFaceExpressions().withAgeAndGender().withFaceDescriptors();
+      console.log(results);
       faceapi.draw.drawDetections(out, results.map(res => res.detection))
       results.forEach(result => {
         const { age, gender, genderProbability } = result
