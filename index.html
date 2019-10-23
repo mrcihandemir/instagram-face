@@ -25,7 +25,7 @@
         faceapi.nets.faceExpressionNet.loadFromUri('/')
         ]).then(start)
     
-      function start() {console.log("started");}
+      function start() {console.log("started"); changeFaceDetector('ssd_mobilenetv1'); }
   </script>
   
 <script>
@@ -38,7 +38,6 @@
         //document.getElementById("inst").innerHTML = '<img id="refImg" src="' + response[0].content + '">';
         //document.getElementById("img").src = response[0].content;
         loadImageFromUrl(response[0].content);
-        await changeFaceDetector('ssd_mobilenetv1');
         updateResults();
         //run();
     }
