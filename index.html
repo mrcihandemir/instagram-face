@@ -43,7 +43,7 @@
     success: function( response ) {
         //document.getElementById("inst").innerHTML = '<img id="refImg" src="' + response[0].content + '">';
         //document.getElementById("img").src = response[0].content;
-        await loadImageFromUrl(response[0].content);
+        loadImageFromUrl(response[0].content);
         updateResults();
         run();
     }
