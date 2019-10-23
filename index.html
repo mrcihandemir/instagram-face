@@ -113,6 +113,7 @@
         console.log("begin canvas");
         var c = document.getElementById("cnvimg");
         var ctx = c.getContext("2d");
+        ctx.beginPath();
         ctx.clearRect(0, 0, 150, 150);
         var img = document.getElementById("gandhi"); 
         ctx.drawImage(img, 0, 0);
