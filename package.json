@@ -9,7 +9,8 @@
   "dependencies": {
    "express": "4.17.1",
    "request": "2.88.0",
-   "canvas": "2.6.0"
+   "canvas": "2.6.0",
+   "fetch": "1.1.0"
 },
   "keywords": [
     "instagram-face",
