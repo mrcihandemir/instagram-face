@@ -88,15 +88,24 @@ app.post('/instagram', async function(req, res){
         }
       };
     console.log(options);
-    request(options, function(error, response, html){
+    var x = await request2(options);
+    return x;
+})
+
+
+   function request2(options) {
+
+   return  new Promise(function(error, response, html){
         if(!error){
           var $ = cheerio.load(html);
           var result = $('meta[property="og:image"]').attr('content');
           console.log(result);
-          const { jResult } = result;
-          return jResult;
+          return result;
         } else { console.log("error instagram request"); }
     })
-})
+     )
+    
+   }
 
 
+new Promi
