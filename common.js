@@ -23,3 +23,25 @@ async function requestExternalImage(imageUrl) {
     throw new Error('failed to load image from url: ' + imageUrl)
   }
 }
+
+
+
+
+async function requestInstagramProfilePic(accountName) {
+  console.log("POSTMAN2");
+  console.log(JSON.stringify({ accountName }));
+  const res = await fetch('instagram', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify({ accountName })
+  })
+  if (!(res.status < 400)) {
+    console.error(res.status + ' : ' + await res.text())
+    throw new Error('failed to fetch instagram profile pic from url: ' + accountName)
+  } else {
+    console.log(res)
+  }    
+
+}
