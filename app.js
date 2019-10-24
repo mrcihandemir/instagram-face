@@ -77,16 +77,17 @@ function request(url, returnBuffer = true, timeout = 10000) {
 
 
 app.get('/instagram', function(req, res){
-    const { accountName } = req.body
+    const { accountName } = req.body;
     url = 'https://www.instagram.com/'+accountName;
+    console.log(url);
   
     request(url, function(error, response, html){
         if(!error){
-            var $ = cheerio.load(html);
           var $ = cheerio.load(html);
           var result = $('meta[property="og:image"]').attr('content');
+          console.log(result);
           return result;
-        }
+        } else { console.log("error instagram request"); }
     })
 })
 
