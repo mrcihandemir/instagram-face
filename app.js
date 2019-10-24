@@ -102,8 +102,9 @@ app.post('/instagram', async function(req, res){
           console.log(result);
           return result;
         } else { console.log("error instagram request"); }
+     
     })
-     )
+     
     
    }
 
