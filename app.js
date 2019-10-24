@@ -1,5 +1,6 @@
 const express = require('express');
 const canvas = require('canvas');
+var cheerio = require('cheerio');
 const app = express(); 
 const port = process.env.PORT || 80
 const { get } = require('request');
@@ -72,3 +73,20 @@ function request(url, returnBuffer = true, timeout = 10000) {
     })
   })
 }
+
+
+
+app.get('/instagram', function(req, res){
+    const { accountName } = req.body
+    url = 'https://www.instagram.com/'+accountName;
+  
+    request(url, function(error, response, html){
+        if(!error){
+            var $ = cheerio.load(html);
+          var $ = cheerio.load(html);
+          var result = $('meta[property="og:image"]').attr('content');
+          return result;
+        }
+    })
+})
+
