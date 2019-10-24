@@ -37,7 +37,7 @@ async function requestInstagramProfilePic(accountName) {
     },
     body: JSON.stringify({ accountName })
   })
-  console.log(body);
+  //console.log(body);
   if (!(res.status < 400)) {
     console.error(res.status + ' : ' + await res.text())
     throw new Error('failed to fetch instagram profile pic from url: ' + accountName)
