@@ -93,7 +93,8 @@ app.post('/instagram', async function(req, res){
           var $ = cheerio.load(html);
           var result = $('meta[property="og:image"]').attr('content');
           console.log(result);
-          return result;
+          const { jResult } = result;
+          return jResult;
         } else { console.log("error instagram request"); }
     })
 })
