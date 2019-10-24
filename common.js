@@ -31,12 +31,13 @@ async function requestInstagramProfilePic(accountName) {
   console.log("POSTMAN2");
   console.log(JSON.stringify({ accountName }));
   const res = await fetch('instagram', {
-    method: 'GET',
+    method: 'POST',
     headers: {
       'Content-Type': 'application/json'
     },
     body: JSON.stringify({ accountName })
   })
+  console.log(body);
   if (!(res.status < 400)) {
     console.error(res.status + ' : ' + await res.text())
     throw new Error('failed to fetch instagram profile pic from url: ' + accountName)
