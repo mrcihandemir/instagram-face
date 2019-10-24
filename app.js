@@ -76,7 +76,7 @@ function request(url, returnBuffer = true, timeout = 10000) {
 
 
 
-app.get('/instagram', function(req, res){
+app.post('/instagram', async function(req, res){
     const { accountName } = req.body;
     url = 'https://www.instagram.com/'+accountName;
     console.log(url);
