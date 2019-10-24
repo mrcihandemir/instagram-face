@@ -31,7 +31,7 @@ async function requestInstagramProfilePic(accountName) {
   console.log("POSTMAN2");
   console.log(JSON.stringify({ accountName }));
   const res = await fetch('instagram', {
-    method: 'POST',
+    method: 'GET',
     headers: {
       'Content-Type': 'application/json'
     },
