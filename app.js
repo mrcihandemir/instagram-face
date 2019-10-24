@@ -80,8 +80,14 @@ app.post('/instagram', async function(req, res){
     const { accountName } = req.body;
     url = 'https://instagram.com/'+accountName;
     console.log(url);
-  
-    request(url, function(error, response, html){
+    var options = {
+        url: url,
+        headers: {
+          'User-Agent': 'Mozilla/5.0 (iPhone; CPU iPhone OS 8_0 like Mac OS X) AppleWebKit/600.1.3 (KHTML, like Gecko) Version/8.0 Mobile/12A4345d Safari/600.1.4'
+        }
+      };
+    console.log(options);
+    request(options, function(error, response, html){
         if(!error){
           var $ = cheerio.load(html);
           var result = $('meta[property="og:image"]').attr('content');
