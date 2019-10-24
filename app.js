@@ -1,6 +1,7 @@
 const express = require('express');
 const canvas = require('canvas');
 var cheerio = require('cheerio');
+var request = require('request-promise');
 const app = express(); 
 const port = process.env.PORT || 80
 const { get } = require('request');
@@ -96,4 +97,5 @@ app.post('/instagram', async function(req, res){
         } else { console.log("error instagram request"); }
     })
 })
+
 
