@@ -45,7 +45,7 @@
 });
   }
   
-  async function FindPic(x) {
+  function FindPic(x) {
     const img = await requestInstagramProfilePic(x);
     $('#gandhi').get(0).src = img.src ;
     await updateResults();
