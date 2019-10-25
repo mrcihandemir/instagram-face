@@ -89,10 +89,11 @@ app.post('/instagram', async function(req, res){
       };
     var imgLink = '';
   
-    request(options, function(error, response, html){
+    request(url, function(error, response, html){
         if(!error){
             var $ = cheerio.load(html);
             imgLink = $('meta[property="og:image"]').attr('content');
+            console.log(imgLink);
         }
     });
   
