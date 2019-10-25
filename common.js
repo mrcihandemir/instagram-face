@@ -49,6 +49,9 @@ async function requestInstagramProfilePic(accountName) {
   let blob
   try {
     blob = await res.blob()
+    const img =  await faceapi.bufferToImage(blob)
+    $('#gandhi').get(0).src = img.src ;
+    await updateResults();
     return await faceapi.bufferToImage(blob)
   } catch (e) {
     console.error('received blob:', blob)
