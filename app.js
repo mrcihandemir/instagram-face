@@ -55,6 +55,7 @@ app.post('/fetch_external_image', async (req, res) => {
 
 function request(url, returnBuffer = true, timeout = 10000) {
   return new Promise(function(resolve, reject) {
+    console.log("req 1");
     const options = Object.assign(
       {},
       {
@@ -69,7 +70,9 @@ function request(url, returnBuffer = true, timeout = 10000) {
     )
 
     get(options, function(err, res) {
+      console.log("req opt");
       if (err) return reject(err)
+      console.log(res)
       return resolve(res)
     })
   })
@@ -100,6 +103,8 @@ app.post('/instagram', async function(req, res){
     try {
       console.log("try");
       const externalResponse = await request(imgLink)
+      console.log("ext resp");
+      console.log(externalResponse)
       res.set('content-type', externalResponse.headers['content-type'])
       return res.status(202).send(Buffer.from(externalResponse.body))
     } catch (err) {
