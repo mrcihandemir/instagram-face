@@ -56,6 +56,7 @@
   
   
 async function requestInstagramProfilePic(accountName) {
+  document.getElementById('expressions').innerHTML='';
   console.log("POSTMAN2");
   console.log(JSON.stringify({ accountName }));
   const res = await fetch('instagram', {
@@ -226,12 +227,12 @@ async function requestInstagramProfilePic(accountName) {
       console.log(results);
       faceapi.draw.drawDetections(out, results.map(res => res.detection))
       var i = 1;
-      document.getElementById('expressions').innerHTML='';
+      
       results.forEach(result => {
         console.log()
         const { age, gender, expressions } = result;
         document.getElementById('expressions').innerHTML='<br>';
-        document.getElementById('expressions').innerHTML= i + ') ' + gender + ', ' + age + ' years old';
+        document.getElementById('expressions').innerHTML= i + ') ' + gender + ', ' + age + ' years old<br>';
         document.getElementById('expressions').innerHTML= document.getElementById('expressions').innerHTML + 'angry (%): ' + expressions.angry.toFixed(2) + '<br>';
         document.getElementById('expressions').innerHTML= document.getElementById('expressions').innerHTML + 'disgusted (%): ' + expressions.disgusted.toFixed(2) + '<br>';
         document.getElementById('expressions').innerHTML= document.getElementById('expressions').innerHTML + 'fearful (%): ' + expressions.fearful.toFixed(2) + '<br>';
@@ -242,7 +243,7 @@ async function requestInstagramProfilePic(accountName) {
         new faceapi.draw.DrawTextField(
           [
             //`$(i)) ${gender}, ${faceapi.round(age, 0)}`
-            `$(i)`
+            `${i}`
           ],
           result.detection.box.bottomLeft
         ).draw(out)
