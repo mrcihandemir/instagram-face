@@ -225,9 +225,13 @@ async function requestInstagramProfilePic(accountName) {
       const results = await faceapi.detectAllFaces(img, options).withFaceLandmarks().withFaceExpressions().withAgeAndGender().withFaceDescriptors();
       console.log(results);
       faceapi.draw.drawDetections(out, results.map(res => res.detection))
+      var i = 1;
+      document.getElementById('expressions').innerHTML='';
       results.forEach(result => {
+        console.log()
         const { age, gender, expressions } = result;
-        document.getElementById('expressions').innerHTML='';
+        document.getElementById('expressions').innerHTML='<br>';
+        document.getElementById('expressions').innerHTML= i + ') ' + gender + ', ' + age + ' years old';
         document.getElementById('expressions').innerHTML= document.getElementById('expressions').innerHTML + 'angry (%): ' + expressions.angry.toFixed(2) + '<br>';
         document.getElementById('expressions').innerHTML= document.getElementById('expressions').innerHTML + 'disgusted (%): ' + expressions.disgusted.toFixed(2) + '<br>';
         document.getElementById('expressions').innerHTML= document.getElementById('expressions').innerHTML + 'fearful (%): ' + expressions.fearful.toFixed(2) + '<br>';
@@ -237,13 +241,14 @@ async function requestInstagramProfilePic(accountName) {
         document.getElementById('expressions').innerHTML= document.getElementById('expressions').innerHTML + 'surprised (%): ' + expressions.surprised.toFixed(2) ;        
         new faceapi.draw.DrawTextField(
           [
-            `${gender},${faceapi.round(age, 0)}`
+            //`$(i)) ${gender}, ${faceapi.round(age, 0)}`
+            `$(i)`
           ],
           result.detection.box.bottomLeft
         ).draw(out)
        });
       
-      
+        i = i + 1;
         }
     
     async function updateQueryImageResults() {
