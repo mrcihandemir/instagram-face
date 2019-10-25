@@ -1,3 +1,4 @@
+/*
 async function requestExternalImage(imageUrl) {
   console.log("POSTMAN");
   console.log(JSON.stringify({ imageUrl }));
@@ -23,7 +24,7 @@ async function requestExternalImage(imageUrl) {
     throw new Error('failed to load image from url: ' + imageUrl)
   }
 }
-
+*/
 
 
 
@@ -44,5 +45,15 @@ async function requestInstagramProfilePic(accountName) {
   } else {
     console.log(res)
   }    
+  
+  let blob
+  try {
+    blob = await res.blob()
+    return await faceapi.bufferToImage(blob)
+  } catch (e) {
+    console.error('received blob:', blob)
+    console.error('error:', e)
+    throw new Error('failed to load image from url: ' + imageUrl)
+  }
 
 }
