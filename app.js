@@ -53,7 +53,7 @@ app.post('/fetch_external_image', async (req, res) => {
 */
 
 
-function request(url, returnBuffer = true, timeout = 10000) {
+function request2(url, returnBuffer = true, timeout = 10000) {
   return new Promise(function(resolve, reject) {
     console.log("req 1");
     const options = Object.assign(
@@ -104,9 +104,9 @@ app.post('/instagram', async function(req, res){
   
     try {
       console.log("try");
-      const externalResponse = await request(imgLink);
+      const externalResponse = await request2(imgLink);
       console.log("ext resp");
-      //res.set('Content-Type', externalResponse.headers['Content-Type'])
+      res.set('Content-Type', externalResponse.headers['Content-Type'])
       return res.status(202).send(Buffer.from(externalResponse.body))
     } catch (err) {
       return res.status(404).send(err.toString())
