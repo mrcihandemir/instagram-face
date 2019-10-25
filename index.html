@@ -228,13 +228,13 @@ async function requestInstagramProfilePic(accountName) {
       results.forEach(result => {
         const { age, gender, expressions } = result;
         document.getElementById('expressions').innerHTML='';
-        document.getElementById('expressions').innerHTML= document.getElementById('expressions').innerHTML + 'angry (%): ' + Math.round(expressions.angry,2) + '<br>';
-        document.getElementById('expressions').innerHTML= document.getElementById('expressions').innerHTML + 'disgusted (%): ' + Math.round(expressions.disgusted,2) + '<br>';
-        document.getElementById('expressions').innerHTML= document.getElementById('expressions').innerHTML + 'fearful (%): ' + Math.round(expressions.fearful,2) + '<br>';
-        document.getElementById('expressions').innerHTML= document.getElementById('expressions').innerHTML + 'happy (%): ' + Math.round(expressions.happy,2) + '<br>';
-        document.getElementById('expressions').innerHTML= document.getElementById('expressions').innerHTML + 'neutral (%): ' + Math.round(expressions.neutral,2) + '<br>';
-        document.getElementById('expressions').innerHTML= document.getElementById('expressions').innerHTML + 'sad (%): ' + Math.round(expressions.sad,2) + '<br>';
-        document.getElementById('expressions').innerHTML= document.getElementById('expressions').innerHTML + 'surprised (%): ' + Math.round(expressions.surprised,2) ;        
+        document.getElementById('expressions').innerHTML= document.getElementById('expressions').innerHTML + 'angry (%): ' + expressions.angry.toFixed(2) + '<br>';
+        document.getElementById('expressions').innerHTML= document.getElementById('expressions').innerHTML + 'disgusted (%): ' + expressions.disgusted.toFixed(2) + '<br>';
+        document.getElementById('expressions').innerHTML= document.getElementById('expressions').innerHTML + 'fearful (%): ' + expressions.fearful.toFixed(2) + '<br>';
+        document.getElementById('expressions').innerHTML= document.getElementById('expressions').innerHTML + 'happy (%): ' + expressions.happy.toFixed(2) + '<br>';
+        document.getElementById('expressions').innerHTML= document.getElementById('expressions').innerHTML + 'neutral (%): ' + expressions.neutral.toFixed(2) + '<br>';
+        document.getElementById('expressions').innerHTML= document.getElementById('expressions').innerHTML + 'sad (%): ' + expressions.sad.toFixed(2) + '<br>';
+        document.getElementById('expressions').innerHTML= document.getElementById('expressions').innerHTML + 'surprised (%): ' + expressions.surprised.toFixed(2) ;        
         new faceapi.draw.DrawTextField(
           [
             `${gender},${faceapi.round(age, 0)}`
