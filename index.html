@@ -229,7 +229,7 @@ async function requestInstagramProfilePic(accountName) {
       
       i = 1;
       results.forEach(result => {
-        console.log()
+        var ndx = i;
         const { age, gender, expressions } = result;
         var vAngry = expressions.angry *100;
         var vDisgusted = expressions.disgusted *100;
@@ -238,25 +238,26 @@ async function requestInstagramProfilePic(accountName) {
         var vNeutral = expressions.neutral *100;
         var vSad = expressions.sad *100;
         var vSurprised = expressions.surprised *100;
-        document.getElementById('expressions').innerHTML='<br>';
-        document.getElementById('expressions').innerHTML= i + ') ' + gender + ', ' + faceapi.round(age, 0) + ' years old<br>';
-        document.getElementById('expressions').innerHTML= document.getElementById('expressions').innerHTML + 'angry (%): ' + vAngry.toFixed(2) + '<br>';
-        document.getElementById('expressions').innerHTML= document.getElementById('expressions').innerHTML + 'disgusted (%): ' + vDisgusted.toFixed(2) + '<br>';
-        document.getElementById('expressions').innerHTML= document.getElementById('expressions').innerHTML + 'fearful (%): ' + vFearful.toFixed(2) + '<br>';
-        document.getElementById('expressions').innerHTML= document.getElementById('expressions').innerHTML + 'happy (%): ' + vHappy.toFixed(2) + '<br>';
-        document.getElementById('expressions').innerHTML= document.getElementById('expressions').innerHTML + 'neutral (%): ' + vNeutral.toFixed(2) + '<br>';
-        document.getElementById('expressions').innerHTML= document.getElementById('expressions').innerHTML + 'sad (%): ' + vSad.toFixed(2) + '<br>';
-        document.getElementById('expressions').innerHTML= document.getElementById('expressions').innerHTML + 'surprised (%): ' + vSurprised.toFixed(2) ;        
+        document.getElementById('expressions').innerHTML+='<br>';
+        document.getElementById('expressions').innerHTML+= i + ') ' + gender + ', ' + faceapi.round(age, 0) + ' years old<br>';
+        document.getElementById('expressions').innerHTML+= 'angry (%): ' + vAngry.toFixed(2) + '<br>';
+        document.getElementById('expressions').innerHTML+= 'disgusted (%): ' + vDisgusted.toFixed(2) + '<br>';
+        document.getElementById('expressions').innerHTML+= 'fearful (%): ' + vFearful.toFixed(2) + '<br>';
+        document.getElementById('expressions').innerHTML+= 'happy (%): ' + vHappy.toFixed(2) + '<br>';
+        document.getElementById('expressions').innerHTML+= 'neutral (%): ' + vNeutral.toFixed(2) + '<br>';
+        document.getElementById('expressions').innerHTML+= 'sad (%): ' + vSad.toFixed(2) + '<br>';
+        document.getElementById('expressions').innerHTML+= 'surprised (%): ' + vSurprised.toFixed(2) ;        
         new faceapi.draw.DrawTextField(
           [
             //`$(i)) ${gender}, ${faceapi.round(age, 0)}`
-            `${i}`
+            `${ndx}`
           ],
           result.detection.box.bottomLeft
         ).draw(out)
+        i = i + 1;
        });
       
-        i = i + 1;
+        
         }
     
     async function updateQueryImageResults() {
