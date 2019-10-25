@@ -44,13 +44,18 @@
     }
 });
   }
+  
+  async function FindPic(x) {
+    const img = await requestInstagramProfilePic(x);
+    $('#gandhi').get(0).src = img.src ;
+  }
 
 </script>
   
   
 </head>
 <body>
-  <h1>profile name: <input type="text" name="ip" id="ip"><button onclick="requestInstagramProfilePic(document.getElementById('ip').value)">Getir</button></h1>
+  <h1>profile name: <input type="text" name="ip" id="ip"><button onclick="FindPic(document.getElementById('ip').value)">Getir</button></h1>
   <div style="position: relative" class="margin">
     <img id="gandhi" src="gandhi.jpg" width="150" height="150">
     <canvas id="cnvimg" width="150" height="150" style="position: absolute;top: 0;left: 0;">
