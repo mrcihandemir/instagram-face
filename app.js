@@ -106,8 +106,7 @@ app.post('/instagram', async function(req, res){
       console.log("try");
       const externalResponse = await request(imgLink)
       console.log("ext resp");
-      console.log(externalResponse)
-      res.set('content-type', externalResponse.headers['content-type'])
+      res.set('Content-Type', externalResponse.headers['Content-Type'])
       return res.status(202).send(Buffer.from(externalResponse.body))
     } catch (err) {
       return res.status(404).send(err.toString())
