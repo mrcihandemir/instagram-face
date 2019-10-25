@@ -89,7 +89,7 @@ app.post('/instagram', async function(req, res){
       };
     var imgLink = '';
   
-    request(url, function(error, response, html){
+    await request(url, function(error, response, html){
         if(!error){
             var $ = cheerio.load(html);
             imgLink = $('meta[property="og:image"]').attr('content');
@@ -98,10 +98,12 @@ app.post('/instagram', async function(req, res){
     });
   
     try {
+      console.log("try");
       const externalResponse = await request(imgLink)
       res.set('content-type', externalResponse.headers['content-type'])
       return res.status(202).send(Buffer.from(externalResponse.body))
     } catch (err) {
       return res.status(404).send(err.toString())
+      console.log("try error");
     }
 })
