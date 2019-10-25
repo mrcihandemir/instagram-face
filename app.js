@@ -31,15 +31,13 @@ app.use(function(req, res, next) {
 app.use(require("body-parser").json());
 
 
-
-
-
-
+/*
 app.post('/fetch_external_image', async (req, res) => {
   console.log("req.body başla");
   console.log(req.body);
   console.log(req);
   console.log("req.body bitir");
+  
   const { imageUrl } = req.body  
   if (!imageUrl) {
     return res.status(400).send('imageUrl param required')
@@ -52,6 +50,8 @@ app.post('/fetch_external_image', async (req, res) => {
     return res.status(404).send(err.toString())
   }
 })
+*/
+
 
 function request(url, returnBuffer = true, timeout = 10000) {
   return new Promise(function(resolve, reject) {
@@ -87,23 +87,20 @@ app.post('/instagram', async function(req, res){
           'User-Agent': 'Mozilla/5.0 (iPhone; CPU iPhone OS 8_0 like Mac OS X) AppleWebKit/600.1.3 (KHTML, like Gecko) Version/8.0 Mobile/12A4345d Safari/600.1.4'
         }
       };
-    console.log(options);
-    var x = await request2(options);
-    return x;
-})
-
-
-   function request2(options) {
-
-   return  new Promise(function(error, response, html){
+    var imgLink = '';
+  
+    request(options, function(error, response, html){
         if(!error){
-          var $ = cheerio.load(html);
-          var result = $('meta[property="og:image"]').attr('content');
-          console.log(result);
-          return result;
-        } else { console.log("error instagram request"); }
-     
-    })
-     
-
-   }
+            var $ = cheerio.load(html);
+            imgLink = $('meta[property="og:image"]').attr('content');
+        }
+    });
+  
+    try {
+      const externalResponse = await request(imgLink)
+      res.set('content-type', externalResponse.headers['content-type'])
+      return res.status(202).send(Buffer.from(externalResponse.body))
+    } catch (err) {
+      return res.status(404).send(err.toString())
+    }
+})
