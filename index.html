@@ -218,6 +218,9 @@ async function requestInstagramProfilePic(accountName) {
       const img = $('#gandhi').get(0);
       const options = getFaceDetectorOptions();
       const out = $('#cnvimg').get(0);
+      const ctx = out.getContext("2d");
+      ctx.clearRect(0, 0, 150, 150);
+      ctx.beginPath();
       const results = await faceapi.detectAllFaces(img, options).withFaceLandmarks().withFaceExpressions().withAgeAndGender().withFaceDescriptors();
       console.log(results);
       faceapi.draw.drawDetections(out, results.map(res => res.detection))
