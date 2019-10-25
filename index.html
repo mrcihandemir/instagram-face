@@ -99,6 +99,7 @@ async function requestInstagramProfilePic(accountName) {
   <div style="position: relative" class="margin">
     <img id="gandhi" src="gandhi.jpg" width="150" height="150">
     <canvas id="cnvimg" width="150" height="150" style="position: absolute;top: 0;left: 0;">
+    <h3 id="expressions"></h3>  
   </div>
 
     
@@ -226,7 +227,14 @@ async function requestInstagramProfilePic(accountName) {
       faceapi.draw.drawDetections(out, results.map(res => res.detection))
       results.forEach(result => {
         const { age, gender, expressions } = result;
-        console.log(expressions.sad);
+        document.getElementById('expressions').innerHTML='';
+        document.getElementById('expressions').innerHTML= document.getElementById('expressions').innerHTML + 'angry (%): ' + round(expressions.angry,2) + '<br>';
+        document.getElementById('expressions').innerHTML= document.getElementById('expressions').innerHTML + 'disgusted (%): ' + round(expressions.disgusted,2) + '<br>';
+        document.getElementById('expressions').innerHTML= document.getElementById('expressions').innerHTML + 'fearful (%): ' + round(expressions.fearful,2) + '<br>';
+        document.getElementById('expressions').innerHTML= document.getElementById('expressions').innerHTML + 'happy (%): ' + round(expressions.happy,2) + '<br>';
+        document.getElementById('expressions').innerHTML= document.getElementById('expressions').innerHTML + 'neutral (%): ' + round(expressions.neutral,2) + '<br>';
+        document.getElementById('expressions').innerHTML= document.getElementById('expressions').innerHTML + 'sad (%): ' + round(expressions.sad,2) + '<br>';
+        document.getElementById('expressions').innerHTML= document.getElementById('expressions').innerHTML + 'surprised (%): ' + round(expressions.surprised,2) ;        
         new faceapi.draw.DrawTextField(
           [
             `${gender},${faceapi.round(age, 0)}`
