@@ -16,6 +16,7 @@
   <script src="index.js"></script>
   
   <script>
+  var i = 1;  
       Promise.all([
         faceapi.nets.faceRecognitionNet.loadFromUri('/'),
         faceapi.nets.tinyFaceDetector.loadFromUri('/'),
@@ -56,6 +57,7 @@
   
   
 async function requestInstagramProfilePic(accountName) {
+  i = 1;
   document.getElementById('expressions').innerHTML='';
   console.log("POSTMAN2");
   console.log(JSON.stringify({ accountName }));
@@ -231,15 +233,22 @@ async function requestInstagramProfilePic(accountName) {
       results.forEach(result => {
         console.log()
         const { age, gender, expressions } = result;
+        var vAngry = expressions.angry *100;
+        var vDisgusted = expressions.disgusted *100;
+        var vFearful = expressions.fearful *100;
+        var vHappy = expressions.happy *100;
+        var vNeutral = expressions.neutral *100;
+        var vSad = expressions.sad *100;
+        var vSurprised = expressions.surprised *100;
         document.getElementById('expressions').innerHTML='<br>';
-        document.getElementById('expressions').innerHTML= i + ') ' + gender + ', ' + age + ' years old<br>';
-        document.getElementById('expressions').innerHTML= document.getElementById('expressions').innerHTML + 'angry (%): ' + expressions.angry.toFixed(2) + '<br>';
-        document.getElementById('expressions').innerHTML= document.getElementById('expressions').innerHTML + 'disgusted (%): ' + expressions.disgusted.toFixed(2) + '<br>';
-        document.getElementById('expressions').innerHTML= document.getElementById('expressions').innerHTML + 'fearful (%): ' + expressions.fearful.toFixed(2) + '<br>';
-        document.getElementById('expressions').innerHTML= document.getElementById('expressions').innerHTML + 'happy (%): ' + expressions.happy.toFixed(2) + '<br>';
-        document.getElementById('expressions').innerHTML= document.getElementById('expressions').innerHTML + 'neutral (%): ' + expressions.neutral.toFixed(2) + '<br>';
-        document.getElementById('expressions').innerHTML= document.getElementById('expressions').innerHTML + 'sad (%): ' + expressions.sad.toFixed(2) + '<br>';
-        document.getElementById('expressions').innerHTML= document.getElementById('expressions').innerHTML + 'surprised (%): ' + expressions.surprised.toFixed(2) ;        
+        document.getElementById('expressions').innerHTML= i + ') ' + gender + ', ' + faceapi.round(age, 0) + ' years old<br>';
+        document.getElementById('expressions').innerHTML= document.getElementById('expressions').innerHTML + 'angry (%): ' + vAngry.toFixed(2) + '<br>';
+        document.getElementById('expressions').innerHTML= document.getElementById('expressions').innerHTML + 'disgusted (%): ' + vDisgusted.toFixed(2) + '<br>';
+        document.getElementById('expressions').innerHTML= document.getElementById('expressions').innerHTML + 'fearful (%): ' + vFearful.toFixed(2) + '<br>';
+        document.getElementById('expressions').innerHTML= document.getElementById('expressions').innerHTML + 'happy (%): ' + vHappy.toFixed(2) + '<br>';
+        document.getElementById('expressions').innerHTML= document.getElementById('expressions').innerHTML + 'neutral (%): ' + vNeutral.toFixed(2) + '<br>';
+        document.getElementById('expressions').innerHTML= document.getElementById('expressions').innerHTML + 'sad (%): ' + vSad.toFixed(2) + '<br>';
+        document.getElementById('expressions').innerHTML= document.getElementById('expressions').innerHTML + 'surprised (%): ' + vSurprised.toFixed(2) ;        
         new faceapi.draw.DrawTextField(
           [
             //`$(i)) ${gender}, ${faceapi.round(age, 0)}`
