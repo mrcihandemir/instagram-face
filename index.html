@@ -16,7 +16,6 @@
   <script src="index.js"></script>
   
   <script>
-  var i = 1;  
       Promise.all([
         faceapi.nets.faceRecognitionNet.loadFromUri('/'),
         faceapi.nets.tinyFaceDetector.loadFromUri('/'),
@@ -57,7 +56,6 @@
   
   
 async function requestInstagramProfilePic(accountName) {
-  i = 1;
   document.getElementById('expressions').innerHTML='';
   console.log("POSTMAN2");
   console.log(JSON.stringify({ accountName }));
@@ -228,8 +226,8 @@ async function requestInstagramProfilePic(accountName) {
       const results = await faceapi.detectAllFaces(img, options).withFaceLandmarks().withFaceExpressions().withAgeAndGender().withFaceDescriptors();
       console.log(results);
       faceapi.draw.drawDetections(out, results.map(res => res.detection))
-      var i = 1;
       
+      i = 1;
       results.forEach(result => {
         console.log()
         const { age, gender, expressions } = result;
