@@ -225,7 +225,8 @@ async function requestInstagramProfilePic(accountName) {
       console.log(results);
       faceapi.draw.drawDetections(out, results.map(res => res.detection))
       results.forEach(result => {
-        const { age, gender, genderProbability } = result
+        const { age, gender, expressions } = result;
+        console.log(expressions.sad);
         new faceapi.draw.DrawTextField(
           [
             `${gender},${faceapi.round(age, 0)}`
