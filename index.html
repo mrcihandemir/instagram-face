@@ -97,11 +97,6 @@ async function requestInstagramProfilePic(accountName) {
   
 </script>
   
-  <script>
-    $(window).on('load',function() {
-    		$(".loader").fadeOut("slow");
-	    });
-  </script>
 	
 	<script>
       Promise.all([
@@ -114,6 +109,15 @@ async function requestInstagramProfilePic(accountName) {
         ]).then(start)
     
       async function start() {console.log("started"); await run(); }
+  </script>
+	
+	
+  <script>
+	  /*
+    $(window).on('load',function() {
+    		$(".loader").fadeOut("slow");
+	    });
+	    */
   </script>
     
 </head>
@@ -317,6 +321,7 @@ async function requestInstagramProfilePic(accountName) {
       await changeFaceDetector('ssd_mobilenetv1');
       //await faceapi.loadFaceLandmarkModel('/')
       await faceapi.loadFaceRecognitionModel('/');  
+	$(".loader").fadeOut("slow");
     }
     /*
     $(document).ready(function() {
