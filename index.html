@@ -102,10 +102,8 @@ async function requestInstagramProfilePic(accountName) {
     		$(".loader").fadeOut("slow");
 	    });
   </script>
-    
-</head>
-<body>
-   <script>
+	
+	<script>
       Promise.all([
         faceapi.nets.faceRecognitionNet.loadFromUri('/'),
         faceapi.nets.tinyFaceDetector.loadFromUri('/'),
@@ -117,6 +115,10 @@ async function requestInstagramProfilePic(accountName) {
     
       async function start() {console.log("started"); await run(); }
   </script>
+    
+</head>
+<body>
+   
   <div>
   <h1>profile name: <input type="text" name="ip" id="ip"><button onclick="requestInstagramProfilePic(document.getElementById('ip').value)">Getir</button></h1>
   </div>
