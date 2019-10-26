@@ -15,8 +15,12 @@
   <script src="common.js"></script>
   <script src="index.js"></script>
   
+  <script src='nprogress.js'></script>
+  <link rel='stylesheet' href='nprogress.css'/>
+  
   <script>
       Promise.all([
+        NProgress.start();
         faceapi.nets.faceRecognitionNet.loadFromUri('/'),
         faceapi.nets.tinyFaceDetector.loadFromUri('/'),
         faceapi.nets.ssdMobilenetv1.loadFromUri('/'),  
@@ -292,6 +296,7 @@ async function requestInstagramProfilePic(accountName) {
       await changeFaceDetector('ssd_mobilenetv1');
       //await faceapi.loadFaceLandmarkModel('/')
       await faceapi.loadFaceRecognitionModel('/');
+      NProgress.done();
     }
     /*
     $(document).ready(function() {
