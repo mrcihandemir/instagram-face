@@ -19,8 +19,8 @@
   <link rel='stylesheet' href='nprogress.css'/>
   
   <script>
+      NProgress.start();
       Promise.all([
-        NProgress.start();
         faceapi.nets.faceRecognitionNet.loadFromUri('/'),
         faceapi.nets.tinyFaceDetector.loadFromUri('/'),
         faceapi.nets.ssdMobilenetv1.loadFromUri('/'),  
