@@ -10,13 +10,26 @@
     }
     canvas { position: absolute;}
   </style>
+  
+  <style>
+        .no-js #loader { display: none;  }
+    .js #loader { display: block; position: absolute; left: 100px; top: 0; }
+    .se-pre-con {
+      position: fixed;
+      left: 0px;
+      top: 0px;
+      width: 100%;
+      height: 100%;
+      z-index: 9999;
+      background: url(http://smallenvelop.com/wp-content/uploads/2014/08/Preloader_11.gif) center no-repeat #fff;
+    }
+  </style>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="http://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.js"></script>
+  
   <script src="face-api.js"></script>
   <script src="common.js"></script>
   <script src="index.js"></script>
-  
-  <script src='nprogress.js'></script>
-  <link rel='stylesheet' href='nprogress.css'/>
   
  
   
@@ -85,11 +98,16 @@ async function requestInstagramProfilePic(accountName) {
   
 </script>
   
-  
+  <script>
+  $(window).load(function() {
+		// Animate loader off screen
+		$(".se-pre-con").fadeOut("slow");;
+	});
+  </script>
+    
 </head>
 <body>
    <script>
-      NProgress.start();
       Promise.all([
         faceapi.nets.faceRecognitionNet.loadFromUri('/'),
         faceapi.nets.tinyFaceDetector.loadFromUri('/'),
@@ -101,9 +119,11 @@ async function requestInstagramProfilePic(accountName) {
     
       async function start() {console.log("started"); await run(); }
   </script>
-  
+  <div class="se-pre-con"></div>
+  <div>
   <h1>profile name: <input type="text" name="ip" id="ip"><button onclick="requestInstagramProfilePic(document.getElementById('ip').value)">Getir</button></h1>
-  <div style="position: relative" class="margin">
+  </div>
+    <div style="position: relative" class="margin">
     <img id="gandhi" src="gandhi.jpg" width="150" height="150">
     <canvas id="cnvimg" width="150" height="150" style="position: absolute;top: 0;left: 0;">
   </div>
@@ -298,7 +318,6 @@ async function requestInstagramProfilePic(accountName) {
       await changeFaceDetector('ssd_mobilenetv1');
       //await faceapi.loadFaceLandmarkModel('/')
       await faceapi.loadFaceRecognitionModel('/');
-      NProgress.done();
     }
     /*
     $(document).ready(function() {
