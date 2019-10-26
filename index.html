@@ -18,19 +18,7 @@
   <script src='nprogress.js'></script>
   <link rel='stylesheet' href='nprogress.css'/>
   
-  <script>
-      NProgress.start();
-      Promise.all([
-        faceapi.nets.faceRecognitionNet.loadFromUri('/'),
-        faceapi.nets.tinyFaceDetector.loadFromUri('/'),
-        faceapi.nets.ssdMobilenetv1.loadFromUri('/'),  
-        faceapi.nets.ageGenderNet.loadFromUri('/'),
-        faceapi.nets.faceLandmark68Net.loadFromUri('/'),
-        faceapi.nets.faceExpressionNet.loadFromUri('/')
-        ]).then(start)
-    
-      async function start() {console.log("started"); await run(); }
-  </script>
+ 
   
 <script>
   /*
@@ -100,6 +88,20 @@ async function requestInstagramProfilePic(accountName) {
   
 </head>
 <body>
+   <script>
+      NProgress.start();
+      Promise.all([
+        faceapi.nets.faceRecognitionNet.loadFromUri('/'),
+        faceapi.nets.tinyFaceDetector.loadFromUri('/'),
+        faceapi.nets.ssdMobilenetv1.loadFromUri('/'),  
+        faceapi.nets.ageGenderNet.loadFromUri('/'),
+        faceapi.nets.faceLandmark68Net.loadFromUri('/'),
+        faceapi.nets.faceExpressionNet.loadFromUri('/')
+        ]).then(start)
+    
+      async function start() {console.log("started"); await run(); }
+  </script>
+  
   <h1>profile name: <input type="text" name="ip" id="ip"><button onclick="requestInstagramProfilePic(document.getElementById('ip').value)">Getir</button></h1>
   <div style="position: relative" class="margin">
     <img id="gandhi" src="gandhi.jpg" width="150" height="150">
