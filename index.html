@@ -170,16 +170,10 @@ async function requestInstagramProfilePic(accountName) {
 	
 	
   <script>
-	  /*
-    $(window).on('load',function() {
-    		$(".loader").fadeOut("slow");
-	    });
-	    */
-	/*
-	  $(document).ready(function() {
-		      $(".loader").fadeOut("slow");
-    		});
-	  */
+	function getInstaPage(x) {
+		$(".loader").fadeIn();
+		requestInstagramProfilePic(x);
+	}
   </script>
     
 </head>
@@ -189,7 +183,7 @@ async function requestInstagramProfilePic(accountName) {
   <h1>write your (or friend's) instagram account name and let the AI detect the face(s), gender, age and face expressions</h1>
   <h1>profile name: 
   <input class="txt" type="text" name="ip" id="ip"/>
-  <button class="btn" onclick="requestInstagramProfilePic(document.getElementById('ip').value)">show</button>
+  <button class="btn" onclick="getInstaPage(document.getElementById('ip').value)">show</button>
   </h1>
   
 	<div class="outsideWrapper">
@@ -378,7 +372,7 @@ async function requestInstagramProfilePic(accountName) {
         i = i + 1;
        });
       
-        
+        $(".loader").fadeOut("slow");
         }
     
     async function updateQueryImageResults() {
