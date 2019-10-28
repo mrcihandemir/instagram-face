@@ -4,11 +4,14 @@
   <meta http-equiv="X-UA-Compatible" content="ie-edge">
 <title>instagram-face machine learning</title>
   <style>
-    body {
-      justify-content: center;
-      align-items: center;
-    }
-    canvas { position: absolute;}
+	    .center-screen {
+	  display: flex;
+	  flex-direction: column;
+	  justify-content: center;
+	  align-items: center;
+	  text-align: center;
+	  min-height: 100vh;
+	}
   </style>
   
   <style>
@@ -128,7 +131,7 @@ async function requestInstagramProfilePic(accountName) {
 </head>
 <body>
    <div class="loader"></div>
-  <div>
+  <div class="center-screen">
   <h1>profile name: <input type="text" name="ip" id="ip"><button onclick="requestInstagramProfilePic(document.getElementById('ip').value)">Getir</button></h1>
   </div>
     <div style="position: relative" class="margin">
