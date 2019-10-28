@@ -49,6 +49,24 @@
 	.td-right {background-color:#eae9e9;border-radius: 5px;}
 	.div-right {background-color:red; float:left;}
 	
+	  
+	  .outsideWrapper{ 
+    width:150px; height:150px; 
+    }
+.insideWrapper{ 
+    width:100%; height:100%; 
+    position:relative;}
+.coveredImage{ 
+    width:100%; height:100%; 
+    position:absolute; top:0px; left:0px;
+}
+.coveringCanvas{ 
+    width:100%; height:100%; 
+    position:absolute; top:0px; left:0px;
+    background-color: rgba(255,0,0,.1);
+}
+	  
+	  
   </style>
   
   <style>
@@ -175,12 +193,14 @@ async function requestInstagramProfilePic(accountName) {
   <button class="btn" onclick="requestInstagramProfilePic(document.getElementById('ip').value)">show</button>
   </h1>
   
-    <img id="gandhi" src="gandhi.jpg" width="150" height="150">
-    <!--<canvas id="cnvimg" width="150" height="150" style="position: absolute;top: 0;left: 0;"></canvas>-->
-    <canvas id="cnvimg" width="150" height="150"></canvas>
-  
-	
-	<div id="expressions">
+	<div class="outsideWrapper">
+	    <div class="insideWrapper">
+		<img id="gandhi" src="gandhi.jpg" width="150" height="150" class="coveredImage">
+		<canvas id="cnvimg" class="coveringCanvas"></canvas>
+	    </div>
+	</div>
+   	
+	  <div id="expressions">
 		<table class="tbl">
 			<tr><td colspan=2>1) male, 74 years old</td></tr>
 			<tr><td class="td-left">😠 angry</td><td class="td-right"><div class="div-right" style="width:0.34%;">0.34%</div></td></tr>
