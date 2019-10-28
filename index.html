@@ -94,6 +94,7 @@ async function requestInstagramProfilePic(accountName) {
 	
   <script>
 	function getInstaPage(x) {
+		history.pushState(null, null, "https://instagram-face.herokuapp.com/");
 		$(".loader").fadeIn();
 		requestInstagramProfilePic(x);
 	}
