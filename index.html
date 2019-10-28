@@ -5,13 +5,50 @@
 <title>instagram-face machine learning</title>
   <style>
 	    .center-screen {
-	  display: flex;
-	  flex-direction: column;
-	  justify-content: center;
-	  align-items: center;
-	  text-align: center;
-	  min-height: 100vh;
+	  position: absolute;
+    top: 30%;
+    left: 50%;
+	text-align:"center";
+    transform: translate(-50%, -50%);
+	
 	}
+	
+	h1 {
+	color: #545454;
+	font-family: arial,sans-serif;
+    font-size: 14px;
+	}
+	
+	.txt {
+	background-color: #FFF;
+    border-radius: 5px;
+    color: #444;
+    font-size: 13px;
+    width: 145px;
+    border: 1px solid #DDD;
+    margin-bottom: 8px;
+    padding: 3px 8px;
+	}
+	
+	.btn {
+	background-color: rgb(225, 48, 108);
+    border-radius: 5px;
+    border: 1px solid rgb(5,10,230);
+    display: inline-block;
+    cursor: pointer;
+    color: rgb(255, 255, 255);
+    font-family: Arial;
+    font-size: 13px;
+    padding: 3px 8px;
+    text-decoration: none;
+    text-shadow: rgb(47, 102, 39) 0px 1px 0px;
+	}
+	
+	.tbl { font-size:13px;width:150px;}
+	.td-left {width:60%;}
+	.td-right {background-color:#eae9e9;border-radius: 5px;}
+	.div-right {background-color:red; float:left;}
+	
   </style>
   
   <style>
@@ -130,17 +167,33 @@ async function requestInstagramProfilePic(accountName) {
     
 </head>
 <body>
-   <div class="loader"></div>
+      <!--<div class="loader"></div>-->
   <div class="center-screen">
-  <h1>profile name: <input type="text" name="ip" id="ip"><button onclick="requestInstagramProfilePic(document.getElementById('ip').value)">Getir</button></h1>
-  </div>
-    <div style="position: relative" class="margin">
+  <h1>write your (or friend's) instagram account name and let the AI detect the face(s), gender, age and face expressions</h1>
+  <h1>profile name: 
+  <input class="txt" type="text" name="ip" id="ip"/>
+  <button class="btn" onclick="requestInstagramProfilePic(document.getElementById('ip').value)">show</button>
+  </h1>
+  
     <img id="gandhi" src="gandhi.jpg" width="150" height="150">
-    <canvas id="cnvimg" width="150" height="150" style="position: absolute;top: 0;left: 0;">
-  </div>
-    <div><h3 id="expressions"></h3></div>  
-
-    
+    <canvas id="cnvimg" width="150" height="150" style="position: absolute;top: 0;left: 0;"></canvas>
+  
+	
+	<div id="expressions">
+		<table class="tbl">
+			<tr><td colspan=2>1) male, 74 years old</td></tr>
+			<tr><td class="td-left">😠 angry</td><td class="td-right"><div class="div-right" style="width:0.34%;">0.34%</div></td></tr>
+			<tr><td class="td-left">🤮 disgusted</td><td class="td-right"><div class="div-right" style="width:0.01%;">0.01%</div></td></tr>
+			<tr><td class="td-left">😨 fearful</td><td class="td-right"><div class="div-right" style="width:0.00%;">0.00%</div></td></tr>
+			<tr><td class="td-left">😇 happy</td><td class="td-right"><div class="div-right" style="width:58.29%;">58.29%</div></td></tr>
+			<tr><td class="td-left">😐 neutral</td><td class="td-right"><div class="div-right" style="width:37.23%;">37.23%</div></td></tr>
+			<tr><td class="td-left">😢 sad</td><td class="td-right"><div class="div-right" style="width:4.12%;">4.12%</div></td></tr>
+			<tr><td class="td-left">😮 surprised</td><td class="td-right"><div class="div-right" style="width:0.00%;">0.00%</div></td></tr>
+		</table>
+	</div>
+	
+	
+	</div>  
     
   
       
@@ -277,13 +330,29 @@ async function requestInstagramProfilePic(accountName) {
         var vSurprised = expressions.surprised *100;
         document.getElementById('expressions').innerHTML+='<br>';
         document.getElementById('expressions').innerHTML+= i + ') ' + gender + ', ' + faceapi.round(age, 0) + ' years old<br>';
-        document.getElementById('expressions').innerHTML+= 'angry (%): ' + vAngry.toFixed(2) + '<br>';
+        document.getElementById('expressions').innerHTML+= 'angry (%): ' +  + '<br>';
         document.getElementById('expressions').innerHTML+= 'disgusted (%): ' + vDisgusted.toFixed(2) + '<br>';
         document.getElementById('expressions').innerHTML+= 'fearful (%): ' + vFearful.toFixed(2) + '<br>';
         document.getElementById('expressions').innerHTML+= 'happy (%): ' + vHappy.toFixed(2) + '<br>';
         document.getElementById('expressions').innerHTML+= 'neutral (%): ' + vNeutral.toFixed(2) + '<br>';
         document.getElementById('expressions').innerHTML+= 'sad (%): ' + vSad.toFixed(2) + '<br>';
-        document.getElementById('expressions').innerHTML+= 'surprised (%): ' + vSurprised.toFixed(2) ;        
+        document.getElementById('expressions').innerHTML+= 'surprised (%): ' + vSurprised.toFixed(2) ;   
+
+	var tdLeft = '<tr><td class="td-left">';
+	var tdRight1 = '</td><td class="td-right"><div class="div-right" style="width:'; 
+	var tdRight2 = '%;">';      
+	var tdRight3 = '%</div></td></tr>';      
+	document.getElementById('expressions').innerHTML+= '<table class="tbl">';     
+	document.getElementById('expressions').innerHTML+= '<tr><td colspan=2>' + i + ') ' + gender + ', ' + faceapi.round(age, 0) + ' years old</td></tr>';
+	document.getElementById('expressions').innerHTML+= tdLeft + '😠 angry' + tdRight1 + vAngry.toFixed(2) + tdRight2 + vAngry.toFixed(2) + tdRight3;     
+	document.getElementById('expressions').innerHTML+= tdLeft + '🤮 disgusted' + tdRight1 + vDisgusted.toFixed(2) + tdRight2 + vDisgusted.toFixed(2) + tdRight3;     
+	document.getElementById('expressions').innerHTML+= tdLeft + '😨 fearful' + tdRight1 + vFearful.toFixed(2) + tdRight2 + vFearful.toFixed(2) + tdRight3;           
+	document.getElementById('expressions').innerHTML+= tdLeft + '😇 happy' + tdRight1 + vHappy.toFixed(2) + tdRight2 + vHappy.toFixed(2) + tdRight3;           
+	document.getElementById('expressions').innerHTML+= tdLeft + '😐 neutral' + tdRight1 + vNeutral.toFixed(2) + tdRight2 + vNeutral.toFixed(2) + tdRight3;     
+	document.getElementById('expressions').innerHTML+= tdLeft + '😢 sad' + tdRight1 + vSad.toFixed(2) + tdRight2 + vSad.toFixed(2) + tdRight3;     
+	document.getElementById('expressions').innerHTML+= tdLeft + '😮 surprised' + tdRight1 + vSurprised.toFixed(2) + tdRight2 + vSurprised.toFixed(2) + tdRight3;           
+	document.getElementById('expressions').innerHTML+= '</table>';  
+	      
         new faceapi.draw.DrawTextField(
           [
             //`$(i)) ${gender}, ${faceapi.round(age, 0)}`
