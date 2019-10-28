@@ -296,7 +296,7 @@ async function requestInstagramProfilePic(accountName) {
        });
       
         $(".loader").fadeOut("slow");
-	window.location.replace("https://instagram-face.herokuapp.com/username/"+document.getElementById('ip').value);
+	history.pushState(null, null, "https://instagram-face.herokuapp.com/username/"+document.getElementById('ip').value);
         }
     
     async function updateQueryImageResults() {
