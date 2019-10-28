@@ -334,16 +334,19 @@ async function requestInstagramProfilePic(accountName) {
 	var tdRight1 = '</td><td class="td-right"><div class="div-right" style="width:'; 
 	var tdRight2 = '%;">';      
 	var tdRight3 = '%</div></td></tr>';      
-	document.getElementById('expressions').innerHTML+= '<table class="tbl">';     
-	document.getElementById('expressions').innerHTML+= '<tr><td colspan=2>' + i + ') ' + gender + ', ' + faceapi.round(age, 0) + ' years old</td></tr>';
-	document.getElementById('expressions').innerHTML+= tdLeft + '😠 angry' + tdRight1 + vAngry.toFixed(2) + tdRight2 + vAngry.toFixed(2) + tdRight3;     
-	document.getElementById('expressions').innerHTML+= tdLeft + '🤮 disgusted' + tdRight1 + vDisgusted.toFixed(2) + tdRight2 + vDisgusted.toFixed(2) + tdRight3;     
-	document.getElementById('expressions').innerHTML+= tdLeft + '😨 fearful' + tdRight1 + vFearful.toFixed(2) + tdRight2 + vFearful.toFixed(2) + tdRight3;           
-	document.getElementById('expressions').innerHTML+= tdLeft + '😇 happy' + tdRight1 + vHappy.toFixed(2) + tdRight2 + vHappy.toFixed(2) + tdRight3;           
-	document.getElementById('expressions').innerHTML+= tdLeft + '😐 neutral' + tdRight1 + vNeutral.toFixed(2) + tdRight2 + vNeutral.toFixed(2) + tdRight3;     
-	document.getElementById('expressions').innerHTML+= tdLeft + '😢 sad' + tdRight1 + vSad.toFixed(2) + tdRight2 + vSad.toFixed(2) + tdRight3;     
-	document.getElementById('expressions').innerHTML+= tdLeft + '😮 surprised' + tdRight1 + vSurprised.toFixed(2) + tdRight2 + vSurprised.toFixed(2) + tdRight3;           
-	document.getElementById('expressions').innerHTML+= '</table>';  
+	var vExp = '<table class="tbl">';     
+	vExp+= '<tr><td colspan=2>' + i + ') ' + gender + ', ' + faceapi.round(age, 0) + ' years old</td></tr>';
+	vExp+= tdLeft + '😠 angry' + tdRight1 + vAngry.toFixed(2) + tdRight2 + vAngry.toFixed(2) + tdRight3;     
+	vExp+= tdLeft + '🤮 disgusted' + tdRight1 + vDisgusted.toFixed(2) + tdRight2 + vDisgusted.toFixed(2) + tdRight3;     
+	vExp+= tdLeft + '😨 fearful' + tdRight1 + vFearful.toFixed(2) + tdRight2 + vFearful.toFixed(2) + tdRight3;           
+	vExp+= tdLeft + '😇 happy' + tdRight1 + vHappy.toFixed(2) + tdRight2 + vHappy.toFixed(2) + tdRight3;           
+	vExp+= tdLeft + '😐 neutral' + tdRight1 + vNeutral.toFixed(2) + tdRight2 + vNeutral.toFixed(2) + tdRight3;     
+	vExp+= tdLeft + '😢 sad' + tdRight1 + vSad.toFixed(2) + tdRight2 + vSad.toFixed(2) + tdRight3;     
+	vExp+= tdLeft + '😮 surprised' + tdRight1 + vSurprised.toFixed(2) + tdRight2 + vSurprised.toFixed(2) + tdRight3;           
+	vExp+= '</table>';  
+	      
+	var dExp = document.getElementById('expressions');
+	dExp.innerHTML = vExp;      
 	      
         new faceapi.draw.DrawTextField(
           [
