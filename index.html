@@ -328,15 +328,7 @@ async function requestInstagramProfilePic(accountName) {
         var vNeutral = expressions.neutral *100;
         var vSad = expressions.sad *100;
         var vSurprised = expressions.surprised *100;
-        document.getElementById('expressions').innerHTML+='<br>';
-        document.getElementById('expressions').innerHTML+= i + ') ' + gender + ', ' + faceapi.round(age, 0) + ' years old<br>';
-        document.getElementById('expressions').innerHTML+= 'angry (%): ' +  + '<br>';
-        document.getElementById('expressions').innerHTML+= 'disgusted (%): ' + vDisgusted.toFixed(2) + '<br>';
-        document.getElementById('expressions').innerHTML+= 'fearful (%): ' + vFearful.toFixed(2) + '<br>';
-        document.getElementById('expressions').innerHTML+= 'happy (%): ' + vHappy.toFixed(2) + '<br>';
-        document.getElementById('expressions').innerHTML+= 'neutral (%): ' + vNeutral.toFixed(2) + '<br>';
-        document.getElementById('expressions').innerHTML+= 'sad (%): ' + vSad.toFixed(2) + '<br>';
-        document.getElementById('expressions').innerHTML+= 'surprised (%): ' + vSurprised.toFixed(2) ;   
+        
 
 	var tdLeft = '<tr><td class="td-left">';
 	var tdRight1 = '</td><td class="td-right"><div class="div-right" style="width:'; 
