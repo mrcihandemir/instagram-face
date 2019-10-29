@@ -12,40 +12,9 @@
   
  <link rel="stylesheet" type="text/css" href="js-css/index.css">
 	
-<script>
-	var pathname = window.location.pathname;
-	if (pathname.substr(0, 46)=='https://instagram-face.herokuapp.com/username/') {
-		$(".loader").fadeIn();
-		requestInstagramProfilePic(pathname.substr(46, 100));
-	}
-</script>	
+	
   
 <script>
-  /*
-  async function Getir(x) {
-  
-  $.ajax({
-    url: "https://instagram-face.herokuapp.com/instagram",
-    data: { accountName: x} ,
-    dataType: "json",
-    success: async function( response ) {
-        //document.getElementById("inst").innerHTML = '<img id="refImg" src="' + response[0].content + '">';
-        //document.getElementById("img").src = response[0].content;
-        await loadImageFromUrl(response[0].content);
-        await updateResults();
-        //run();
-    }
-});
-  }
-  
-  function FindPic(x) {
-    const img = await requestInstagramProfilePic(x);
-    $('#gandhi').get(0).src = img.src ;
-    await updateResults();
-  }
-*/
-  
-  
   
 async function requestInstagramProfilePic(accountName) {
   document.getElementById('expressions').innerHTML='';
@@ -340,7 +309,12 @@ async function requestInstagramProfilePic(accountName) {
       await changeFaceDetector('ssd_mobilenetv1');
       //await faceapi.loadFaceLandmarkModel('/')
       await faceapi.loadFaceRecognitionModel('/');  
-	    	      $(".loader").fadeOut("slow");
+	
+	var pathname = window.location.pathname;
+	if (pathname.substr(0, 46)=='https://instagram-face.herokuapp.com/username/') {
+		$(".loader").fadeIn();
+		requestInstagramProfilePic(pathname.substr(46, 100));
+	}	    
 	
     }
     /*
