@@ -69,9 +69,9 @@ async function requestInstagramProfilePic(accountName) {
 	console.log("started");
 	await run(); 
 	var pathname = window.location.pathname;
-	if (pathname.substr(0, 46)=='https://instagram-face.herokuapp.com/username/') {
+	if (pathname.substr(0, 47)=='https://instagram-face.herokuapp.com/?username=') {
 		//$(".loader").fadeIn();
-		requestInstagramProfilePic(pathname.substr(46, 100));
+		requestInstagramProfilePic(pathname.substr(47, 100));
 	}
 			     
 			     }
@@ -80,7 +80,7 @@ async function requestInstagramProfilePic(accountName) {
 	
   <script>
 	function getInstaPage(x) {
-		history.pushState(null, null, "https://instagram-face.herokuapp.com/");
+		history.pushState(null, null, "https://instagram-face.herokuapp.com/?username="+x);
 		$(".loader").fadeIn();
 		requestInstagramProfilePic(x);
 	}
