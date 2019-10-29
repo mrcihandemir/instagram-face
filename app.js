@@ -20,7 +20,7 @@ app.get('/', function (req, res) {
 
 app.get('/username/*', function (req, res) {
   // res.send('Hello World');
-  res.sendfile('index.html');
+  res.redirect('/');
   //res.send('hell');
 });
 
