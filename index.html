@@ -65,7 +65,16 @@ async function requestInstagramProfilePic(accountName) {
         faceapi.nets.faceExpressionNet.loadFromUri('/')
         ]).then(start)
     
-      async function start() {console.log("started"); await run(); }
+      async function start() {
+	console.log("started");
+	await run(); 
+	var pathname = window.location.pathname;
+	if (pathname.substr(0, 46)=='https://instagram-face.herokuapp.com/username/') {
+		//$(".loader").fadeIn();
+		requestInstagramProfilePic(pathname.substr(46, 100));
+	}
+			     
+			     }
   </script>
 	
 	
@@ -310,11 +319,7 @@ async function requestInstagramProfilePic(accountName) {
       //await faceapi.loadFaceLandmarkModel('/')
       await faceapi.loadFaceRecognitionModel('/');  
 	
-	var pathname = window.location.pathname;
-	if (pathname.substr(0, 46)=='https://instagram-face.herokuapp.com/username/') {
-		$(".loader").fadeIn();
-		requestInstagramProfilePic(pathname.substr(46, 100));
-	}	    
+		    
 	
     }
     /*
