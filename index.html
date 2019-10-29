@@ -69,7 +69,7 @@ async function requestInstagramProfilePic(accountName) {
 	console.log("started");
 	await run(); 
 	$(".loader").fadeOut("slow");      
-	var pathname = window.location.pathname;
+	var pathname = window.location.href;
 	console.log(pathname);
 	if (pathname.substr(0, 47)=='https://instagram-face.herokuapp.com/?username=') {
 		$(".loader").fadeIn();
