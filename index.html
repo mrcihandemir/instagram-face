@@ -73,6 +73,7 @@ async function requestInstagramProfilePic(accountName) {
 	console.log(pathname);
 	if (pathname.substr(0, 47)=='https://instagram-face.herokuapp.com/?username=') {
 		$(".loader").fadeIn();
+		document.getElementById('ip').value = pathname.substr(47, 100);
 		getInstaPage(pathname.substr(47, 100));
 	}
 			     
@@ -82,7 +83,7 @@ async function requestInstagramProfilePic(accountName) {
 	
   <script>
 	function getInstaPage(x) {
-		history.pushState(null, null, "https://instagram-face.herokuapp.com/?username="+x);
+		history.pushState(null, null, 'https://instagram-face.herokuapp.com/?username='+x);
 		$(".loader").fadeIn();
 		requestInstagramProfilePic(x);
 	}
@@ -285,7 +286,7 @@ async function requestInstagramProfilePic(accountName) {
        });
       
         $(".loader").fadeOut("slow");
-	history.pushState(null, null, "https://instagram-face.herokuapp.com/?username="+document.getElementById('ip').value);
+	history.pushState(null, null, 'https://instagram-face.herokuapp.com/?username='+document.getElementById('ip').value);
         }
     
     async function updateQueryImageResults() {
