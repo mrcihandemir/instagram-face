@@ -107,12 +107,16 @@ app.post('/instagram', async function(req, res){
   
     try {
       console.log("try");
-      const externalResponse = await request2(imgLink);
-      console.log("ext resp");
-      res.set('Content-Type', externalResponse.headers['Content-Type'])
-      return res.status(202).send(Buffer.from(externalResponse.body))
+      if(imgLink === null) { throw "imgLink is null" }
+      else {                            
+          const externalResponse = await request2(imgLink);
+          console.log("ext resp");
+          res.set('Content-Type', externalResponse.headers['Content-Type'])
+          return res.status(202).send(Buffer.from(externalResponse.body))
+      }
     } catch (err) {
       return res.status(404).send(err.toString())
       console.log("try error");
+      console.log(err);
     }
 })
