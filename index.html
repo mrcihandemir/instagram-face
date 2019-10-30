@@ -37,10 +37,16 @@ async function requestInstagramProfilePic(accountName) {
   
   let blob
   try {
-    blob = await res.blob()
-    const img =  await faceapi.bufferToImage(blob)
-    $('#gandhi').get(0).src = img.src ;
-    await updateResults();
+    blob = await res.blob();
+    const img =  await faceapi.bufferToImage(blob);
+    if(!img){
+	  console.log("1");
+	  $('#gandhi').get(0).src = img.src ;
+    	  await updateResults();  
+    } else {
+	    console.log("2");
+	    throw "insagram account not found";
+    }
     //return await faceapi.bufferToImage(blob)
     return 0;
   } catch (e) {
