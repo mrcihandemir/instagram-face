@@ -96,29 +96,41 @@ app.post('/instagram', async function(req, res){
       };
       */
     var imgLink = '';
+    var gErr = 0;
   
-    async request(url, function(error, response, html){
+    request(url, function(error, response, html){
         if(!error){
-            console.log("await request");
+              try {
+                console.log("await request");
+                var $ = cheerio.load(html);
+                imgLink = $('meta[property="og:image"]').attr('content');
+                console.log(imgLink);
+                if(imgLink === undefined) { throw "imgLink is null" }
+              catch(err) {
+                gErr = 1 ;
+              }
+          
+        } else {console.log(error); gErr = 1;}
+    });
+  
+  
+    if (gErr == 0 ) {
           try {
-              console.log("try");
-              var $ = cheerio.load(html);
-              imgLink = $('meta[property="og:image"]').attr('content');
-              console.log(imgLink);
-              if(imgLink === undefined) { throw "imgLink is null" }
-              else {                            
+                  console.log("try");                           
                   const externalResponse = await request2(imgLink);
                   console.log("ext resp");
-                  res.set('Content-Type', externalResponse.headers['Content-Type'])
-                  return res.status(202).send(Buffer.from(externalResponse.body))
+                  res.set('Content-Type', externalResponse.headers['Content-Type']);
+                  return res.status(202).send(Buffer.from(externalResponse.body));
               }
             } catch (err) {
-              return res.status(404).send(err.toString())
+              return res.status(404).send(err.toString());
               console.log("try error");
               console.log(err);
             }
-        } else {console.log(error);}
-    });
-  
+    }
+      else {
+          return res.status(999).send('999 hatası');
+        console.log("else error");
+}
     
 })
