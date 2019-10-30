@@ -109,6 +109,8 @@ app.post('/instagram', async function(req, res){
               }  
               catch(err) {
                 console.log('await request catch err');
+                console.log(err.toString());
+                console.log('await request catch fin');
                 gErr = 1 ;
               }
           
