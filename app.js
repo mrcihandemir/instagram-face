@@ -106,6 +106,7 @@ app.post('/instagram', async function(req, res){
                 imgLink = $('meta[property="og:image"]').attr('content');
                 console.log(imgLink);
                 if(imgLink === undefined) { throw "imgLink is null" }
+              }  
               catch(err) {
                 gErr = 1 ;
               }
