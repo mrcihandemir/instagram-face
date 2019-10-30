@@ -107,7 +107,7 @@ app.post('/instagram', async function(req, res){
   
     try {
       console.log("try");
-      if(imgLink === null) { throw "imgLink is null" }
+      if(imgLink === undefined) { throw "imgLink is null" }
       else {                            
           const externalResponse = await request2(imgLink);
           console.log("ext resp");
