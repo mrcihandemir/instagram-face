@@ -121,7 +121,7 @@ app.post('/instagram', async function(req, res){
                   console.log("ext resp");
                   res.set('Content-Type', externalResponse.headers['Content-Type']);
                   return res.status(202).send(Buffer.from(externalResponse.body));
-              }
+              
             } catch (err) {
               return res.status(404).send(err.toString());
               console.log("try error");
