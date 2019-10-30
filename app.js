@@ -97,7 +97,7 @@ app.post('/instagram', async function(req, res){
       */
     var imgLink = '';
   
-     request(url, function(error, response, html){
+    async request(url, function(error, response, html){
         if(!error){
             console.log("await request");
           try {
