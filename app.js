@@ -104,10 +104,11 @@ app.post('/instagram', async function(req, res){
                 console.log("await request");
                 var $ = cheerio.load(html);
                 imgLink = $('meta[property="og:image"]').attr('content');
-                console.log(imgLink);
+                //console.log(imgLink);
                 if(imgLink === undefined) { throw "imgLink is null" }
               }  
               catch(err) {
+                console.log('await request catch err');
                 gErr = 1 ;
               }
           
