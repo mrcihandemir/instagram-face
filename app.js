@@ -99,24 +99,26 @@ app.post('/instagram', async function(req, res){
   
     await request(url, function(error, response, html){
         if(!error){
-            var $ = cheerio.load(html);
-            imgLink = $('meta[property="og:image"]').attr('content');
-            console.log(imgLink);
+            console.log("await request");
+          try {
+              console.log("try");
+              var $ = cheerio.load(html);
+              imgLink = $('meta[property="og:image"]').attr('content');
+              console.log(imgLink);
+              if(imgLink === undefined) { throw "imgLink is null" }
+              else {                            
+                  const externalResponse = await request2(imgLink);
+                  console.log("ext resp");
+                  res.set('Content-Type', externalResponse.headers['Content-Type'])
+                  return res.status(202).send(Buffer.from(externalResponse.body))
+              }
+            } catch (err) {
+              return res.status(404).send(err.toString())
+              console.log("try error");
+              console.log(err);
+            }
         } else {console.log(error);}
     });
   
-    try {
-      console.log("try");
-      if(imgLink === undefined) { throw "imgLink is null" }
-      else {                            
-          const externalResponse = await request2(imgLink);
-          console.log("ext resp");
-          res.set('Content-Type', externalResponse.headers['Content-Type'])
-          return res.status(202).send(Buffer.from(externalResponse.body))
-      }
-    } catch (err) {
-      return res.status(404).send(err.toString())
-      console.log("try error");
-      console.log(err);
-    }
+    
 })
