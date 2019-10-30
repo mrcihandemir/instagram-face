@@ -30,7 +30,7 @@ async function requestInstagramProfilePic(accountName) {
   //console.log(body);
   if (!(res.status < 400)) {
     console.error(res.status + ' : ' + await res.text());
-    document.getElementById('expressions').innerHTML='<h1 style="font-color=red">something went wrong 😢 please make sure you write the instagram account name correctly or check back later 😻</h1>'
+    document.getElementById('expressions').innerHTML='<h1 style="font-color:red;">something went wrong 😢 please make sure you write the instagram account name correctly or check back later 😻 in the mean time, you can play with below profiles to see how it works 😏 </h1>'
     $(".loader").fadeOut("slow");
     throw new Error('failed to fetch instagram profile pic from url: ' + accountName)
   } else {
