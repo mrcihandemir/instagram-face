@@ -1,8 +1,7 @@
   .center-screen {
     position: absolute;
-    top: 50%;
+    top: 10%;
     left: 50%;
-	  overflow: scroll;
 	text-align:"center";
     transform: translate(-50%, -50%);
 	
