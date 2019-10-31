@@ -20,10 +20,10 @@
 	
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
   
-  <script src="/js-css/face-api.js"></script>
-  <script src="/js-css/index.js"></script>
+  <script src="face-api.js"></script>
+  <script src="index.js"></script>
   
- <link rel="stylesheet" type="text/css" href="js-css/index.css">
+ <link rel="stylesheet" type="text/css" href="index.css">
 	
 	
   
@@ -71,12 +71,12 @@ async function requestInstagramProfilePic(accountName) {
 	
 	<script>
       Promise.all([
-        faceapi.nets.faceRecognitionNet.loadFromUri('../model'),
-        faceapi.nets.tinyFaceDetector.loadFromUri('../model'),
-        faceapi.nets.ssdMobilenetv1.loadFromUri('../model'),  
-        faceapi.nets.ageGenderNet.loadFromUri('../model'),
-        faceapi.nets.faceLandmark68Net.loadFromUri('../model'),
-        faceapi.nets.faceExpressionNet.loadFromUri('../model')
+        faceapi.nets.faceRecognitionNet.loadFromUri('/model'),
+        faceapi.nets.tinyFaceDetector.loadFromUri('/model'),
+        faceapi.nets.ssdMobilenetv1.loadFromUri('/model'),  
+        faceapi.nets.ageGenderNet.loadFromUri('/model'),
+        faceapi.nets.faceLandmark68Net.loadFromUri('/model'),
+        faceapi.nets.faceExpressionNet.loadFromUri('/model')
         ]).then(start)
     
       async function start() {
