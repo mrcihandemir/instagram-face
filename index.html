@@ -197,19 +197,7 @@ async function requestInstagramProfilePic(accountName) {
       
     }
     
-    /*
-    async function updateReferenceImageResults() {
-      console.log("updateReferenceImageResults()");
-      const inputImgEl = $('#refImg').get(0)
-      const canvas = $('#refImgOverlay').get(0)
-      const fullFaceDescriptions = await faceapi
-        .detectAllFaces(inputImgEl, getFaceDetectorOptions())
-        .withFaceLandmarks()
-        .withFaceDescriptors()
-    }
-    */
     
-    //yeni yazıldı
     
     async function clearCanvasImage() {
         console.log("clear canvas");
@@ -232,44 +220,9 @@ async function requestInstagramProfilePic(accountName) {
     }
     
     
-    // yeni yazıldı
+   
     async function updateReferenceImageResults() {
       console.log("updateReferenceImageResults()");
-      /*
-      //await createCanvasImage();  
-      console.log("ok");
-      
-      const inputImgEl = $('#cnvimg').get(0);
-      const options = getFaceDetectorOptions();
-      console.log(options);
-      //console.log(inputImgEl);
-      //const canvas = $('#refImgOverlay').get(0)
-      //var inp = document.getElementById("gandhi").src;
-      
-      //const inputImgEl = document.getElementById("gandhi").src;
-      const detections = await faceapi.detectAllFaces(inputImgEl,options);
-      console.log("detections");
-      console.log(detections);
-      const canvas = $('#cnvimg').get(0)
-      //faceapi.matchDimensions(canvas, inputImgEl)
-      faceapi.matchDimensions(canvas, inputImgEl)
-      //faceapi.draw.drawDetections(canvas, faceapi.resizeResults(results, inputImgEl))
-      faceapi.draw.drawDetections(canvas, faceapi.resizeResults(detections, inputImgEl))
-      */
-      
-      /*
-      bu kısım çalışıyor
-      const inputImgEl = $('#gandhi').get(0);
-      const options = getFaceDetectorOptions();
-      console.log(options);
-      const results = await faceapi.detectAllFaces(inputImgEl, options).withFaceLandmarks().withFaceExpressions().withAgeAndGender().withFaceDescriptors();
-      console.log("result");
-      console.log(results);
-      const canvas = $('#cnvimg').get(0);
-      faceapi.matchDimensions(canvas, inputImgEl);
-      faceapi.draw.drawDetections(canvas, faceapi.resizeResults(results, inputImgEl));
-      */
-      
       const img = $('#gandhi').get(0);
       const options = getFaceDetectorOptions();
       const out = $('#cnvimg').get(0);
@@ -358,16 +311,8 @@ async function requestInstagramProfilePic(accountName) {
       //await faceapi.loadFaceLandmarkModel('/')
       await faceapi.loadFaceRecognitionModel('/');  
 	
-		    
-	
     }
-    /*
-    $(document).ready(function() {
-      renderNavBar('#navbar', 'face_recognition')
-      initFaceDetectionControls()
-      run()
-    })
-    */
+   
   </script>
 </body>
 </html>
