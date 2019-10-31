@@ -71,12 +71,12 @@ async function requestInstagramProfilePic(accountName) {
 	
 	<script>
       Promise.all([
-        faceapi.nets.faceRecognitionNet.loadFromUri('../model'),
-        faceapi.nets.tinyFaceDetector.loadFromUri('../model'),
-        faceapi.nets.ssdMobilenetv1.loadFromUri('../model'),  
-        faceapi.nets.ageGenderNet.loadFromUri('../model'),
-        faceapi.nets.faceLandmark68Net.loadFromUri('../model'),
-        faceapi.nets.faceExpressionNet.loadFromUri('../model')
+        faceapi.nets.faceRecognitionNet.loadFromUri('./model'),
+        faceapi.nets.tinyFaceDetector.loadFromUri('./model'),
+        faceapi.nets.ssdMobilenetv1.loadFromUri('./model'),  
+        faceapi.nets.ageGenderNet.loadFromUri('./model'),
+        faceapi.nets.faceLandmark68Net.loadFromUri('./model'),
+        faceapi.nets.faceExpressionNet.loadFromUri('./model')
         ]).then(start)
     
       async function start() {
