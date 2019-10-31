@@ -97,8 +97,7 @@ async function requestInstagramProfilePic(accountName) {
 	function getInstaPage(x) {
 		history.pushState(null, null, 'https://instagram-face.herokuapp.com/?username='+x);
 		$(".loader").fadeIn();
-		ga('set', 'page', '/'+x);
-		ga('send', 'pageview');
+		gtag('config', 'UA-151177504-1', {'page_path': '/'+x});
 		requestInstagramProfilePic(x);
 	}
   </script>
